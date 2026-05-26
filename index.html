@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FC Flamingos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="menu">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <div id="menu-content" class="menu-content">
+        <button onclick="showSection('home')">Úvod, kontakty</button>
+        <button onclick="showSection('matches')">Nadcházejicí zápasy</button>
+        <button onclick="showSection('results')">Tabulky,výsledky</button>
+        <button onclick="showSection('team')">Tým</button>
+        <button onclick="showSection('news')">Aktuality</button>
+      </div>
+    </div>
+
+    <header>
+      <img src="logo.png" alt="Logo FC Flamingos" class="logo" />
+      <h1>FC Flamingos</h1>
+      <p>Růžový balet 🏆🦩</p>
+    </header>
+
+    <section id="home" class="active">
+      <h2>Úvod, kontakty</h2>
+      <p>
+        FC Flamingos je amatérský klub malého fotbalu z Liberce, který vznikl v
+        roce 2023. Klub je známý svými růžovo-černými barvami, aktivitou na
+        sociálních sítích a účastí v soutěži Sudety Cup.
+      </p>
+
+      <div class="card">
+        <h3>Historie klubu</h3>
+        <p>
+          Klub byl založen na podzimu roku 2023. Jeho zakladately byl současný
+          kapitán a historicky nejlepší střelec Matyáš Františk Hájek a dnes již
+          klubová legenda David Drobný. Začátky klubu byli poměrně krušné a
+          výsledky nebyli zdaleka příznivé. Ovšem běhěm posledních dvou sezón se
+          výrazně změnila kostra týmu, kdy přišla celá řada opor a dnes již klub
+          patří k top týmům soutěžě Sudety Cup.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Kontakt</h3>
+        <p><strong>Martin Kulhánek</strong></p>
+        <p>Telefon: +420 721 666 181</p>
+        <a href="https://www.instagram.com/fc_flamingos_/" target="_blank">
+          Instagram FC Flamingos
+        </a>
+      </div>
+    </section>
+
+    <section id="matches">
+      <h2>Nadcházející zápasy</h2>
+
+      <div class="round-box">
+        <h3>Kolo 11</h3>
+
+        <p><b>31. 5. 2026 od 14:00</b></p>
+        <p>📍 UMT Sportpark Liberec</p>
+
+        <p>FC Flamingos vs FK Fitmonci</p>
+        <p>FC Flamingos vs FC Real Chlastico</p>
+        <p>FC Flamingos vs FC Benfika B</p>
+        <p>FC Flamingos vs FK Fitmonci — <b>dohrávka</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 12</h3>
+
+        <p><b>7. 6. 2026 od 10:20</b></p>
+        <p>📍 UMT Sportpark Liberec</p>
+
+        <p>FC Flamingos vs San Miguel C.F.</p>
+        <p>FC Flamingos vs FC Braničtí Rytíři</p>
+        <p>FC Flamingos vs Sudeťáci</p>
+      </div>
+
+      <div class="round-box playoff-box">
+        <h3>🏆 Play-off Sudety Cupu</h3>
+
+        <p>Vyvrcholení a velkolepé finále soutěže.</p>
+
+        <p>
+          Přijď nás podpořit
+          <b>20. 6. 2026</b>
+          na hřiště
+          <b>Na Rozcestí — Vratislavice nad Nisou</b>.
+        </p>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Tabulky a výsledky</h2>
+
+      <div class="table-box">
+        <img src="tabulka.png" alt="Tabulka Sudety Cup" class="tabulka" />
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 1</h3>
+        <p>FC Flamingos vs FC Lidi <b>1:0</b></p>
+        <p>FC Flamingos vs SK Gamble <b>1:0</b></p>
+        <p>FC Flamingos vs FC Tysa <b>1:1</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 2</h3>
+        <p>FC Flamingos vs FK Fitmonci <b>1:3</b></p>
+        <p>FC Flamingos vs FC Real Chlastico <b>3:0</b></p>
+        <p>FC Flamingos vs FC Benfika B <b>3:1</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 3</h3>
+        <p>FC Flamingos vs San Miguel C.F. <b>0:4</b></p>
+        <p>FC Flamingos vs FC Braničtí Rytíři <b>1:3</b></p>
+        <p>FC Flamingos vs Sudeťáci <b>0:1</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 4</h3>
+        <p>FC Flamingos vs FC Lidi <b>3:3</b></p>
+        <p>FC Flamingos vs SK Gamble <b>3:4</b></p>
+        <p>FC Flamingos vs FC Tysa <b>1:0</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 5</h3>
+        <p>FC Flamingos vs FK Fitmonci <b>Bude dohráno</b></p>
+        <p>FC Flamingos vs FC Real Chlastico <b>2:2</b></p>
+        <p>FC Flamingos vs FC Benfika B <b>1:0</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 6</h3>
+        <p>FC Flamingos vs San Miguel C.F. <b>0:3</b></p>
+        <p>FC Flamingos vs FC Braničtí Rytíři <b>3:1</b></p>
+        <p>FC Flamingos vs Sudeťáci <b>2:0</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 7</h3>
+        <p>FC Flamingos vs FC Lidi <b>3:1</b></p>
+        <p>FC Flamingos vs SK Gamble <b>2:4</b></p>
+        <p>FC Flamingos vs FC Tysa <b>1:3</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 8</h3>
+        <p>FC Flamingos vs FK Fitmonci <b>2:1</b></p>
+        <p>FC Flamingos vs FC Real Chlastico <b>0:1</b></p>
+        <p>FC Flamingos vs FC Benfika B <b>1:5</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 9</h3>
+        <p>FC Flamingos vs San Miguel C.F. <b>1:1</b></p>
+        <p>FC Flamingos vs FC Braničtí Rytíři <b>2:1</b></p>
+        <p>FC Flamingos vs Sudeťáci <b>3:0</b></p>
+      </div>
+
+      <div class="round-box">
+        <h3>Kolo 10</h3>
+        <p>FC Flamingos vs FC Lidi <b>6:0</b></p>
+        <p>FC Flamingos vs SK Gamble <b>1:0</b></p>
+        <p>FC Flamingos vs FC Tysa <b>3:1</b></p>
+      </div>
+    </section>
+
+    <section id="team">
+      <h2>Tým</h2>
+
+      <h3 class="position-title">Brankáři</h3>
+      <div class="players-grid">
+        <div class="player-card">
+          <img src="dyma.jpg" alt="Dmitriy Jerasov" />
+          <h3>Dmitriy Jerasov</h3>
+          <p><strong>Pozice:</strong> Brankář</p>
+          <p><strong>Číslo:</strong> 99</p>
+          <p><strong>Věk:</strong> 23 let</p>
+          <p><strong>Statistiky:</strong> 8 čistých kont, 1 gól, 9 asistencí</p>
+        </div>
+
+        <div class="player-card">
+          <img src="luky.jpg" alt="Lukáš Votruba" />
+          <h3>Lukáš Votruba</h3>
+          <p><strong>Pozice:</strong> Brankář</p>
+          <p><strong>Číslo:</strong> 1</p>
+          <p><strong>Věk:</strong> 17 let</p>
+          <p><strong>Statistiky:</strong> 1 čisté konto</p>
+        </div>
+      </div>
+
+      <h3 class="position-title">Obránci</h3>
+      <div class="players-grid">
+        <div class="player-card">
+          <img src="martin.jpg" alt="Martin Kulhánek" />
+          <h3>Martin Kulhánek</h3>
+          <p><strong>Pozice:</strong> Obránce</p>
+          <p><strong>Číslo:</strong> 66</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 4 góly, 5 asistencí</p>
+        </div>
+
+        <div class="player-card">
+          <img src="ivo.jpg" alt="Ivo Rejnart" />
+          <h3>Ivo Rejnart</h3>
+          <p><strong>Pozice:</strong> Obránce</p>
+          <p><strong>Číslo:</strong> 4</p>
+          <p><strong>Věk:</strong> 20 let</p>
+          <p><strong>Statistiky:</strong> -</p>
+        </div>
+
+        <div class="player-card">
+          <img src="kris.jpg" alt="Kristián Bohun" />
+          <h3>Kristián Bohun</h3>
+          <p><strong>Pozice:</strong> Obránce</p>
+          <p><strong>Číslo:</strong> 13</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 1 gól</p>
+        </div>
+
+        <div class="player-card">
+          <img src="kott.jpg" alt="Daniel Kott" />
+          <h3>Daniel Kott</h3>
+          <p><strong>Pozice:</strong> Obránce</p>
+          <p><strong>Číslo:</strong> 69</p>
+          <p><strong>Věk:</strong> 21 let</p>
+          <p><strong>Statistiky:</strong> 1 gól, 5 asistencí</p>
+        </div>
+      </div>
+
+      <h3 class="position-title">Záložníci</h3>
+      <div class="players-grid">
+        <div class="player-card">
+          <img src="fabi.jpg" alt="Fabián Abrt" />
+          <h3>Fabián Abrt</h3>
+          <p><strong>Pozice:</strong> Záložník</p>
+          <p><strong>Číslo:</strong> 28</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 8 gólů, 4 asistence</p>
+        </div>
+
+        <div class="player-card">
+          <img src="jirka.jpg" alt="Jiří Heiland" />
+          <h3>Jiří Heiland</h3>
+          <p><strong>Pozice:</strong> Záložník</p>
+          <p><strong>Číslo:</strong> 11</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 1 asistence</p>
+        </div>
+
+        <div class="player-card">
+          <img src="honza.jpg" alt="Jan Albrecht" />
+          <h3>Jan Albrecht</h3>
+          <p><strong>Pozice:</strong> Záložník</p>
+          <p><strong>Číslo:</strong> 14</p>
+          <p><strong>Věk:</strong> 17 let</p>
+          <p><strong>Statistiky:</strong> 3 góly, 2 asistence</p>
+        </div>
+
+        <div class="player-card">
+          <img src="hajek.jpg" alt="Matyáš František Hájek" />
+          <h3>Matyáš František Hájek</h3>
+          <p><strong>Pozice:</strong> Záložník</p>
+          <p><strong>Číslo:</strong> 10</p>
+          <p><strong>Věk:</strong> 20 let</p>
+          <p><strong>Statistiky:</strong> 9 gólů, 10 asistencí</p>
+        </div>
+
+        <div class="player-card">
+          <img src="klusty.jpg" alt="Jan Klust" />
+          <h3>Jan Klust</h3>
+          <p><strong>Pozice:</strong> Záložník</p>
+          <p><strong>Číslo:</strong> 6</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 16 gólů, 5 asistencí</p>
+        </div>
+      </div>
+
+      <h3 class="position-title">Útočníci</h3>
+      <div class="players-grid">
+        <div class="player-card">
+          <img src="dena.jpg" alt="Denis Dušek" />
+          <h3>Denis Dušek</h3>
+          <p><strong>Pozice:</strong> Útočník</p>
+          <p><strong>Číslo:</strong> 27</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 4 góly, 2 asistence</p>
+        </div>
+
+        <div class="player-card">
+          <img src="simek.jpg" alt="Ondřej Šimek" />
+          <h3>Ondřej Šimek</h3>
+          <p><strong>Pozice:</strong> Útočník</p>
+          <p><strong>Číslo:</strong> 23</p>
+          <p><strong>Věk:</strong> 19 let</p>
+          <p><strong>Statistiky:</strong> 2 góly, 4 asistence</p>
+        </div>
+
+        <div class="player-card">
+          <img src="ondra.jpg" alt="Ondřej Průša" />
+          <h3>Ondřej Průša</h3>
+          <p><strong>Pozice:</strong> Útočník</p>
+          <p><strong>Číslo:</strong> 7</p>
+          <p><strong>Věk:</strong> 20 let</p>
+          <p><strong>Statistiky:</strong> 3 góly, 4 asistence</p>
+        </div>
+
+        <div class="player-card">
+          <img src="forgy.jpg" alt="Adrián Forgáč" />
+          <h3>Adrián Forgáč</h3>
+          <p><strong>Pozice:</strong> Útočník</p>
+          <p><strong>Číslo:</strong> 8</p>
+          <p><strong>Věk:</strong> 21 let</p>
+          <p><strong>Statistiky:</strong> -</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <h2>Aktuality</h2>
+
+      <div class="news-card">
+        <h3>🔥 Vítej v sekci Aktuality</h3>
+
+        <p>
+          Zde budou zveřejňovány nejnovější informace z prostředí FC Flamingos.
+        </p>
+
+        <p>
+          • oznámení klubu • výsledky zápasů • přestupy hráčů • nominace • nové
+          dresy a merch • obsah ze zákulisí • důležité informace k Sudety Cupu
+        </p>
+      </div>
+
+      <div class="news-card">
+        <h3>📢 Připravujeme...</h3>
+
+        <p>První klubové aktuality budou brzy doplněny.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 FC Flamingos | Růžovej balet</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
