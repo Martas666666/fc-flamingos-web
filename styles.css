@@ -959,6 +959,29 @@ header {
   background: linear-gradient(
     90deg,
     rgba(8, 5, 12, 0.88) 0%,
+    .home-link.news-link::before {
+  background-image: url("./aktuality-nove.jpeg");
+}
+
+.home-link.results-link::before {
+  background-image: url("./vysledky-nove.jpeg");
+}
+
+.home-link.matches-link::before {
+  background-image: url("./zapasy-nove.jpeg");
+}
+
+.home-link.team-link::before {
+  background-image: url("./menu-tym.jpeg");
+}
+
+.home-link.gallery-link::before {
+  background-image: url("./galerie-nove.jpeg");
+}
+
+.home-link.contact-link::before {
+  background-image: url("./menu-kontakt.jpeg");
+}
     rgba(8, 5, 12, 0.6) 45%,
     rgba(30, 0, 18, 0.15) 100%
   );
