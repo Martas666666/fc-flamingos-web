@@ -986,3 +986,142 @@ header {
     rgba(30, 0, 18, 0.15) 100%
   );
 }
+/* Kontakty – vedení klubu */
+.club-contacts,
+.club-socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.club-contact {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  background:
+    linear-gradient(
+      110deg,
+      rgba(10, 5, 14, 0.96),
+      rgba(38, 4, 25, 0.88)
+    ),
+    url("./stadion.jpg") center / cover no-repeat;
+  border: 1px solid #ff1493;
+  border-radius: 12px;
+  box-shadow:
+    inset 4px 0 0 #ff1493,
+    0 0 20px rgba(255, 20, 147, 0.12);
+}
+
+.club-contact::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -55px;
+  top: -55px;
+  border: 1px solid rgba(255, 20, 147, 0.35);
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(255, 20, 147, 0.15);
+  pointer-events: none;
+}
+
+.contact-role {
+  display: block;
+  color: #ff79bb;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  line-height: 1.6;
+}
+
+.club-contact h3 {
+  margin: 12px 0 22px;
+  color: white;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  background: rgba(255, 20, 147, 0.10);
+  border: 1px solid rgba(255, 20, 147, 0.45);
+  border-radius: 8px;
+}
+
+.contact-phone > span {
+  color: #ff79bb;
+  font-size: 23px;
+}
+
+.club-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(120deg, #350b26, #120a16);
+  border: 1px solid #ff1493;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 20, 147, 0.12);
+}
+
+.contact-symbol {
+  flex: 0 0 35px;
+  color: #ff1493;
+  font-size: 35px;
+  text-align: center;
+}
+
+.contact-social-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-social-text strong {
+  display: block;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.contact-social-text > span {
+  display: block;
+  margin-top: 7px;
+  color: #e1cbd8;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.contact-phone:hover,
+.club-social:hover {
+  background: #650038;
+  border-color: #ff9bce;
+}
+
+@media (max-width: 600px) {
+  .club-contacts,
+  .club-socials {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .club-contact,
+  .club-social {
+    padding: 22px;
+  }
+
+  .club-contact h3 {
+    font-size: 23px;
+  }
+}
