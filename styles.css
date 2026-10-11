@@ -2,62 +2,171 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #090909;
-  color: white;
+:root {
+  --pink: #ff1493;
+  --light-pink: #ff79bb;
+  --stadium: none;
 }
 
+html {
+  background: #08060b;
+}
+
+body {
+  margin: 0;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(rgba(8, 6, 11, 0.86), rgba(8, 6, 11, 0.96)),
+    var(--stadium) center top / cover no-repeat, #08060b;
+  min-height: 100vh;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--light-pink);
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 5px;
+}
+
+/* Horní stadion a klubové logo */
+
 header {
-  background: linear-gradient(135deg, #ff1493, #111);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 350px;
+  padding: 45px 20px 40px;
   text-align: center;
-  padding: 35px 15px;
+  background: linear-gradient(
+      180deg,
+      rgba(8, 4, 12, 0.2),
+      rgba(8, 4, 12, 0.2) 55%,
+      #08060b
+    ),
+    var(--stadium) center 58% / cover no-repeat, #160b19;
+  border-bottom: 1px solid rgba(255, 20, 147, 0.35);
+}
+
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+header::before {
+  inset: 0;
+  background: radial-gradient(
+      ellipse at 15% 70%,
+      rgba(255, 0, 132, 0.42),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 85% 40%,
+      rgba(255, 0, 132, 0.38),
+      transparent 40%
+    );
+}
+
+header::after {
+  width: 120%;
+  height: 70px;
+  left: -10%;
+  bottom: 15px;
+  transform: rotate(-4deg);
+  background: linear-gradient(
+    transparent,
+    rgba(255, 20, 147, 0.12),
+    transparent
+  );
+  border-top: 1px solid rgba(255, 20, 147, 0.4);
 }
 
 .logo {
-  width: 140px;
-  height: 140px;
+  width: 135px;
+  height: 135px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 0 30px #ff1493;
+  border: 2px solid var(--pink);
+  box-shadow: 0 0 12px var(--pink), 0 0 45px rgba(255, 20, 147, 0.55);
 }
 
 h1 {
-  font-size: 42px;
-  margin: 15px 0 5px;
+  margin: 22px 0 8px;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(38px, 7vw, 66px);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 #6b003b, 0 0 25px #000;
 }
+
+header > p {
+  margin: 0;
+  color: #ffd8ed;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Rozbalovací menu */
 
 .menu {
   position: fixed;
   top: 15px;
-  left: 15px;
+  right: 15px;
   z-index: 1000;
 }
 
 .menu-btn {
-  font-size: 28px;
-  background: black;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 0;
   color: white;
-  border: 2px solid #ff1493;
-  border-radius: 8px;
-  padding: 8px 14px;
+  font-size: 27px;
+  background: rgba(10, 7, 14, 0.94);
+  border: 1px solid var(--pink);
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(255, 20, 147, 0.25);
   cursor: pointer;
 }
 
 .menu-content {
+  position: absolute;
+  right: 0;
+  top: 60px;
   display: flex;
   flex-direction: column;
-  background: #111;
-  border: 2px solid #ff1493;
-  border-radius: 10px;
-  margin-top: 8px;
+  gap: 5px;
+  width: min(270px, calc(100vw - 30px));
   padding: 10px;
+  background: rgba(13, 8, 17, 0.98);
+  border: 1px solid var(--pink);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px #000;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(-10px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
   max-height: calc(100dvh - 95px);
   overflow-y: auto;
 }
@@ -70,45 +179,43 @@ h1 {
 }
 
 .menu-content button {
-  background: black;
-  color: white;
-  border: 1px solid #ff1493;
-  padding: 10px;
-  margin: 4px 0;
-  cursor: pointer;
-  width: 190px;
-  border-radius: 6px;
-  transition: background 0.2s;
   flex-shrink: 0;
+  padding: 13px 12px;
+  color: #fff;
+  text-align: left;
+  font-size: 15px;
+  background: #160d19;
+  border: 1px solid rgba(255, 20, 147, 0.3);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 .menu-content button:hover,
 .menu-content button[aria-current="page"] {
   background: #720944;
+  border-color: var(--pink);
 }
 
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid #ff4da6;
-  outline-offset: 3px;
-}
+/* Sekce */
 
 section {
   display: none;
-  max-width: 900px;
+  width: 100%;
+  max-width: 1000px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 30px 22px 45px;
 }
 
 section.active {
   display: block;
-  animation: section-in 0.25s ease both;
+  animation: section-in 0.3s ease both;
 }
 
 @keyframes section-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -117,42 +224,177 @@ section.active {
 }
 
 h2 {
-  color: #ff1493;
-  font-size: 34px;
+  margin: 10px 0 25px;
+  color: var(--light-pink);
+  font-size: clamp(28px, 5vw, 38px);
 }
 
 section > p,
 .card p {
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+#home > h2 {
+  margin-top: 32px;
+}
+
+#home > p {
+  color: #d6cbd3;
+}
+
+/* Klikací kartičky na úvodu */
+
+.home-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.home-link {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 128px;
+  padding: 24px;
+  color: white;
+  text-align: left;
+  background: #160a17;
+  border: 1px solid var(--pink);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 4px rgba(255, 20, 147, 0.05),
+    0 0 17px rgba(255, 20, 147, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.home-link::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: var(--stadium) center 65% / cover no-repeat;
+  opacity: 0.65;
+}
+
+.home-link::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 4, 11, 0.96) 0%,
+    rgba(14, 4, 15, 0.82) 45%,
+    rgba(70, 0, 39, 0.3)
+  );
+}
+
+.home-link.team-link::before,
+.home-link.about-link::before {
+  background-image: url("logo.png");
+  background-size: 150px;
+  background-position: 90% center;
+  opacity: 0.5;
+}
+
+.home-link:hover {
+  transform: translateY(-3px);
+  border-color: #ffb4dc;
+  box-shadow: 0 0 25px rgba(255, 20, 147, 0.3);
+}
+
+.home-link-icon {
+  flex: 0 0 45px;
+  display: grid;
+  place-items: center;
+  color: var(--pink);
+  filter: drop-shadow(0 0 6px rgba(255, 20, 147, 0.5));
+}
+
+.home-link-icon svg {
+  display: block;
+  width: 42px;
+  height: 42px;
+}
+
+.home-link-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-link-title {
+  display: block;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.home-link-description {
+  display: block;
+  margin-top: 7px;
+  color: #d9c8d3;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.home-link-arrow {
+  font-size: 32px;
+  color: #ffd6ec;
+}
+
+/* Obsahové kartičky */
+
+.card,
+.round-box,
+.news-card,
+.player-card,
+.album-card {
+  background: radial-gradient(
+      ellipse at top right,
+      rgba(255, 20, 147, 0.1),
+      transparent 65%
+    ),
+    #120d16;
+  border: 1px solid rgba(255, 20, 147, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 20, 147, 0.1);
 }
 
 .card {
-  background: #151515;
-  border-left: 5px solid #ff1493;
-  padding: 20px;
+  padding: 24px;
   margin-top: 20px;
-  border-radius: 10px;
+  border-left: 4px solid var(--pink);
 }
 
-a {
-  color: #ff1493;
-  font-weight: bold;
-  overflow-wrap: anywhere;
+.card h3 {
+  color: var(--light-pink);
+  margin-top: 0;
 }
 
 footer {
   text-align: center;
-  padding: 25px;
-  color: #aaa;
+  padding: 25px 15px;
+  color: #b5a6b0;
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 20, 147, 0.15);
 }
+
+/* Tým */
 
 .position-title {
   color: white;
   margin-top: 35px;
-  font-size: 26px;
-  border-bottom: 2px solid #ff1493;
-  padding-bottom: 8px;
+  font-size: 25px;
+  border-bottom: 1px solid var(--pink);
+  padding-bottom: 12px;
 }
 
 .players-grid {
@@ -163,12 +405,8 @@ footer {
 }
 
 .player-card {
-  background: #151515;
-  border: 2px solid #ff1493;
-  border-radius: 14px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 0 18px rgba(255, 20, 147, 0.35);
 }
 
 .player-card img {
@@ -176,116 +414,115 @@ footer {
   height: 260px;
   object-fit: contain;
   object-position: center;
-  background: #0d0d0d;
-  border-radius: 12px;
+  background: #0b080e;
+  border-radius: 8px;
   margin-bottom: 12px;
 }
 
 .player-card h3 {
-  color: #ff1493;
+  color: var(--light-pink);
   margin-bottom: 10px;
 }
 
-.round-box {
-  background: #141414;
-  border: 2px solid #ff1493;
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 0 15px rgba(255, 20, 147, 0.25);
-}
-
-.round-box h3 {
-  color: #ff4da6;
-  margin: 0 0 15px;
-  font-size: 26px;
-}
-
-.round-box p {
-  color: white;
-  font-size: 18px;
-  margin: 10px 0;
+.player-card p {
+  font-size: 15px;
   line-height: 1.5;
 }
 
+/* Zápasy a play-off */
+
+.round-box {
+  padding: 23px;
+  margin-bottom: 22px;
+}
+
+.round-box h3 {
+  color: var(--light-pink);
+  margin: 0 0 15px;
+  font-size: 25px;
+}
+
+.round-box p {
+  font-size: 17px;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
 .round-box b {
-  color: #ff1493;
+  color: var(--light-pink);
 }
 
 .playoff-box {
-  background: linear-gradient(135deg, #ff1493, #8b0058);
-  border: 2px solid #ff4da6;
-  box-shadow: 0 0 25px rgba(255, 20, 147, 0.55);
+  background: linear-gradient(
+      125deg,
+      rgba(147, 0, 77, 0.9),
+      rgba(23, 7, 26, 0.94)
+    ),
+    var(--stadium) center / cover;
+  border-color: var(--pink);
+  box-shadow: 0 0 24px rgba(255, 20, 147, 0.25);
 }
 
 .playoff-box h3 {
   color: white;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .playoff-match {
   padding: 15px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   margin-top: 15px;
 }
 
 .playoff-match h4 {
   margin: 0 0 10px;
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .playoff-box .achievement {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.3);
   padding: 18px;
-  border-radius: 12px;
+  border-radius: 8px;
   margin-top: 20px;
 }
 
+/* Aktuality */
+
 .news-card {
-  background: #141414;
-  border: 2px solid #ff1493;
-  border-radius: 20px;
   padding: 25px;
   margin-bottom: 25px;
-  box-shadow: 0 0 18px rgba(255, 20, 147, 0.25);
 }
 
 .news-card h3 {
-  color: #ff4da6;
+  color: var(--light-pink);
+  margin-top: 0;
   margin-bottom: 15px;
-  font-size: 28px;
+  font-size: 27px;
+  line-height: 1.3;
 }
 
 .news-card p {
-  color: white;
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.8;
 }
 
-/* Tabulka po 12 kolech */
+/* Tabulka */
 
 .standings {
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
   background: radial-gradient(
       ellipse at 100% 0%,
-      rgba(255, 20, 147, 0.3),
+      rgba(255, 20, 147, 0.25),
       transparent 45%
     ),
-    radial-gradient(
-      ellipse at 0% 100%,
-      rgba(255, 20, 147, 0.18),
-      transparent 40%
-    ),
-    #101014;
-  border: 2px solid #ff4da6;
-  border-radius: 18px;
+    #100c15;
+  border: 1px solid var(--pink);
+  border-radius: 12px;
   padding: 28px;
-  margin-bottom: 40px;
-  box-shadow: 0 0 25px rgba(255, 20, 147, 0.25);
+  margin-bottom: 35px;
+  box-shadow: 0 0 25px rgba(255, 20, 147, 0.15);
 }
 
 .standings-header {
@@ -308,7 +545,6 @@ footer {
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 2px #ffb1d9;
-  text-shadow: 0 0 22px rgba(255, 20, 147, 0.6);
 }
 
 .competition-label {
@@ -317,35 +553,35 @@ footer {
 
 .competition-icon {
   display: block;
-  font-size: 54px;
+  font-size: 48px;
   margin-bottom: 8px;
 }
 
 .competition-label strong {
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .competition-label strong span {
-  color: #ff4da6;
+  color: var(--pink);
 }
 
 .round-label {
   text-align: right;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: bold;
 }
 
 .table-scroll {
   overflow-x: auto;
-  border: 2px solid #ff4da6;
-  border-radius: 12px;
+  border: 1px solid var(--pink);
+  border-radius: 8px;
 }
 
 .league-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 420px;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .league-table caption {
@@ -368,7 +604,7 @@ footer {
 
 .league-table thead th {
   color: #ff8bc5;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .league-table th:nth-child(2) {
@@ -380,18 +616,17 @@ footer {
 }
 
 .league-table tbody tr {
-  border-top: 1px solid rgba(255, 77, 166, 0.55);
+  border-top: 1px solid rgba(255, 77, 166, 0.35);
 }
 
 .league-table tbody td:last-child {
-  color: #ff6bac;
+  color: var(--light-pink);
   font-weight: bold;
-  font-size: 23px;
+  font-size: 22px;
 }
 
 .league-table .flamingos-row {
-  background: linear-gradient(90deg, #ff1493, #b30a64);
-  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(90deg, #e6007e, #8d064e);
 }
 
 .league-table .flamingos-row th,
@@ -401,27 +636,88 @@ footer {
 }
 
 .table-legend {
-  color: #ccc;
-  font-size: 13px;
+  color: #c9bcc5;
+  font-size: 12px;
   margin: 16px 0 0;
   text-align: center;
 }
 
-/* Fotogalerie */
+/* Fotoalba */
 
+.photo-albums,
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-  gap: 20px;
-  margin-top: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.album-card {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.album-label {
+  color: #ff85c2;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.album-card h3 {
+  color: var(--light-pink);
+  font-size: 26px;
+  margin: 15px 0 8px;
+}
+
+.album-card p {
+  line-height: 1.6;
+}
+
+.album-card .album-date {
+  color: #c9bcc5;
+  margin: 0 0 18px;
+}
+
+.album-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.album-links a {
+  display: block;
+  padding: 13px 16px;
+  color: white;
+  background: #27101e;
+  border: 1px solid var(--pink);
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.album-links a:hover {
+  background: #9d0057;
+}
+
+.album-playoff {
+  background: linear-gradient(135deg, #650038, #170c1b);
+}
+
+.album-playoff h3 {
+  color: white;
 }
 
 .gallery-grid figure {
   margin: 0;
   overflow: hidden;
-  border: 2px solid #ff1493;
-  border-radius: 14px;
-  background: #151515;
+  border: 1px solid var(--pink);
+  border-radius: 10px;
+  background: #120d16;
 }
 
 .gallery-grid img {
@@ -436,13 +732,52 @@ footer {
   line-height: 1.5;
 }
 
+/* Telefon */
+
 @media (max-width: 600px) {
-  h1 {
-    font-size: 34px;
+  header {
+    min-height: 310px;
+    padding-top: 35px;
   }
 
-  h2 {
-    font-size: 28px;
+  .logo {
+    width: 115px;
+    height: 115px;
+  }
+
+  section {
+    padding: 22px 16px 35px;
+  }
+
+  .home-links {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .home-link {
+    min-height: 104px;
+    padding: 18px;
+    gap: 15px;
+  }
+
+  .home-link-title {
+    font-size: 23px;
+  }
+
+  .home-link-icon {
+    flex-basis: 38px;
+  }
+
+  .home-link-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .card,
+  .round-box,
+  .news-card,
+  .album-card {
+    padding: 20px;
   }
 
   .standings {
@@ -462,7 +797,7 @@ footer {
   }
 
   .competition-icon {
-    font-size: 34px;
+    font-size: 32px;
   }
 
   .competition-label strong {
@@ -488,99 +823,143 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .menu-content,
-  .menu-content button {
-    transition: none;
-  }
-
-  section.active {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
-.photo-albums {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 22px;
-  margin-top: 30px;
+/* Odstranění kresleného stadionu */
+:root {
+  --stadium: none !important;
+}
+/* Skutečná fotografie našeho hřiště */
+:root {
+  --stadium: url("./stadion.jpg") !important;
 }
 
-.album-card {
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-  background: linear-gradient(145deg, #1c1219, #111);
-  border: 2px solid #ff1493;
-  border-radius: 18px;
-  box-shadow: 0 0 18px rgba(255, 20, 147, 0.18);
+body {
+  background: linear-gradient(rgba(8, 5, 12, 0.88), rgba(20, 4, 15, 0.94)),
+    var(--stadium) center / cover no-repeat;
 }
 
-.album-label {
-  color: #ff85c2;
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+header {
+  background: linear-gradient(
+      135deg,
+      rgba(60, 0, 32, 0.65),
+      rgba(8, 5, 12, 0.78)
+    ),
+    var(--stadium) center 65% / cover no-repeat;
 }
 
-.album-card h3 {
-  color: #ff4da6;
-  font-size: 27px;
-  margin: 15px 0 8px;
+.home-link::before {
+  background-image: var(--stadium);
+  background-position: center 70%;
+  background-size: cover;
+  opacity: 0.7;
 }
 
-.album-card p {
-  line-height: 1.6;
+/* U těchto karet ponecháme klubové logo */
+.home-link.team-link::before,
+.home-link.about-link::before {
+  background-image: url("./logo.png");
+  background-position: 90% center;
+  background-size: 150px;
+  background-repeat: no-repeat;
+}
+/* Vlastní fotografie v okýnkách na úvodu */
+.home-link.news-link::before {
+  background-image: url("./menu-aktuality.jpg");
+  background-position: center 35%;
 }
 
-.album-card .album-date {
-  color: #ccc;
-  margin: 0 0 18px;
+.home-link.results-link::before {
+  background-image: url("./menu-vysledky.jpg");
+  background-position: center 25%;
 }
 
-.album-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 15px;
+.home-link.matches-link::before {
+  background-image: url("./menu-zapasy.jpg");
+  background-position: center 40%;
 }
 
-.album-links a {
-  display: block;
-  padding: 13px 16px;
-  color: white;
-  background: #27101e;
-  border: 1px solid #ff1493;
-  border-radius: 10px;
-  text-align: center;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
+.home-link.team-link::before {
+  background-image: url("./menu-tym.jpg");
+  background-position: center 30%;
 }
 
-.album-links a:hover {
-  background: #b80065;
-  transform: translateY(-2px);
+.home-link.gallery-link::before {
+  background-image: url("./menu-galerie.jpg");
+  background-position: center 40%;
 }
 
-.album-links a:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 4px;
+.home-link.contact-link::before {
+  background-image: url("./menu-kontakt.jpg");
+  background-position: center 30%;
 }
 
-.album-playoff {
-  background: linear-gradient(135deg, #6f003e, #21101b);
-  box-shadow: 0 0 24px rgba(255, 20, 147, 0.35);
+/* Stejné zobrazení všech šesti fotografií */
+.home-link:is(
+    .news-link,
+    .results-link,
+    .matches-link,
+    .team-link,
+    .gallery-link,
+    .contact-link
+  )::before {
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.85;
 }
 
-.album-playoff h3 {
-  color: white;
+/* Ztmavení pod textem a jemný růžový nádech */
+.home-link::after {
+  background: linear-gradient(
+    90deg,
+    rgba(8, 5, 12, 0.94) 0%,
+    rgba(8, 5, 12, 0.76) 45%,
+    rgba(50, 0, 28, 0.35) 100%
+  );
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .album-links a {
-    transition: none;
-  }
+.home-link-title,
+.home-link-description {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+/* Nové fotografie pro čtyři okýnka */
+.home-link.news-link::before {
+  background-image: url("./aktuality-nove.jpg");
+  background-position: center 35%;
+}
 
-  .album-links a:hover {
-    transform: none;
-  }
+.home-link.results-link::before {
+  background-image: url("./vysledky-nove.jpg");
+  background-position: center 35%;
+}
+
+.home-link.matches-link::before {
+  background-image: url("./zapasy-nove.jpg");
+  background-position: center 30%;
+}
+
+.home-link.gallery-link::before {
+  background-image: url("./galerie-nove.jpg");
+  background-position: center 35%;
+}
+
+/* Výraznější fotky v těchto čtyřech okýnkách */
+.home-link:is(.news-link, .results-link, .matches-link, .gallery-link)::before {
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.home-link:is(.news-link, .results-link, .matches-link, .gallery-link)::after {
+  background: linear-gradient(
+    90deg,
+    rgba(8, 5, 12, 0.88) 0%,
+    rgba(8, 5, 12, 0.6) 45%,
+    rgba(30, 0, 18, 0.15) 100%
+  );
 }
