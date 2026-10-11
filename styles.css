@@ -1,3 +1,5 @@
+/* Základ */
+
 * {
   box-sizing: border-box;
 }
@@ -5,7 +7,7 @@
 :root {
   --pink: #ff1493;
   --light-pink: #ff79bb;
-  --stadium: none;
+  --stadium: url("./stadion.jpg") !important;
 }
 
 html {
@@ -16,9 +18,11 @@ body {
   margin: 0;
   color: #fff;
   font-family: Arial, sans-serif;
-  background: linear-gradient(rgba(8, 6, 11, 0.86), rgba(8, 6, 11, 0.96)),
-    var(--stadium) center top / cover no-repeat, #08060b;
   min-height: 100vh;
+  background:
+    linear-gradient(rgba(8, 5, 12, 0.88), rgba(20, 4, 15, 0.94)),
+    var(--stadium) center / cover no-repeat,
+    #08060b;
 }
 
 button,
@@ -42,7 +46,7 @@ a:focus-visible {
   outline-offset: 5px;
 }
 
-/* Horní stadion a klubové logo */
+/* Horní fotografie hřiště a logo */
 
 header {
   position: relative;
@@ -51,13 +55,14 @@ header {
   min-height: 350px;
   padding: 45px 20px 40px;
   text-align: center;
-  background: linear-gradient(
-      180deg,
-      rgba(8, 4, 12, 0.2),
-      rgba(8, 4, 12, 0.2) 55%,
-      #08060b
+  background:
+    linear-gradient(
+      135deg,
+      rgba(60, 0, 32, 0.65),
+      rgba(8, 5, 12, 0.78)
     ),
-    var(--stadium) center 58% / cover no-repeat, #160b19;
+    var(--stadium) center 65% / cover no-repeat,
+    #160b19;
   border-bottom: 1px solid rgba(255, 20, 147, 0.35);
 }
 
@@ -71,7 +76,8 @@ header::after {
 
 header::before {
   inset: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at 15% 70%,
       rgba(255, 0, 132, 0.42),
       transparent 45%
@@ -103,7 +109,9 @@ header::after {
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--pink);
-  box-shadow: 0 0 12px var(--pink), 0 0 45px rgba(255, 20, 147, 0.55);
+  box-shadow:
+    0 0 12px var(--pink),
+    0 0 45px rgba(255, 20, 147, 0.55);
 }
 
 h1 {
@@ -263,10 +271,12 @@ section > p,
   padding: 24px;
   color: white;
   text-align: left;
+  text-decoration: none;
   background: #160a17;
   border: 1px solid var(--pink);
   border-radius: 10px;
-  box-shadow: inset 0 0 0 4px rgba(255, 20, 147, 0.05),
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 20, 147, 0.05),
     0 0 17px rgba(255, 20, 147, 0.1);
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
@@ -277,8 +287,9 @@ section > p,
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: var(--stadium) center 65% / cover no-repeat;
-  opacity: 0.65;
+  background: var(--stadium) center 70% / cover no-repeat;
+  opacity: 1;
+  pointer-events: none;
 }
 
 .home-link::after {
@@ -288,17 +299,49 @@ section > p,
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(7, 4, 11, 0.96) 0%,
-    rgba(14, 4, 15, 0.82) 45%,
-    rgba(70, 0, 39, 0.3)
+    rgba(8, 5, 12, 0.88) 0%,
+    rgba(8, 5, 12, 0.6) 45%,
+    rgba(30, 0, 18, 0.15) 100%
   );
+  pointer-events: none;
 }
 
-.home-link.team-link::before,
+/* Správné názvy nahraných fotografií */
+
+.home-link.news-link::before {
+  background-image: url("./aktuality-nove.jpeg");
+  background-position: center 35%;
+}
+
+.home-link.results-link::before {
+  background-image: url("./vysledky-nove.jpeg");
+  background-position: center 35%;
+}
+
+.home-link.matches-link::before {
+  background-image: url("./zapasy-nove.jpeg");
+  background-position: center 30%;
+}
+
+.home-link.team-link::before {
+  background-image: url("./menu-tym.jpeg");
+  background-position: center 30%;
+}
+
+.home-link.gallery-link::before {
+  background-image: url("./galerie-nove.jpeg");
+  background-position: center 35%;
+}
+
+.home-link.contact-link::before {
+  background-image: url("./menu-kontakt.jpeg");
+  background-position: center 30%;
+}
+
 .home-link.about-link::before {
-  background-image: url("logo.png");
-  background-size: 150px;
+  background-image: url("./logo.png");
   background-position: 90% center;
+  background-size: 150px;
   opacity: 0.5;
 }
 
@@ -345,7 +388,13 @@ section > p,
   line-height: 1.4;
 }
 
+.home-link-title,
+.home-link-description {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
 .home-link-arrow {
+  flex-shrink: 0;
   font-size: 32px;
   color: #ffd6ec;
 }
@@ -357,7 +406,8 @@ section > p,
 .news-card,
 .player-card,
 .album-card {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at top right,
       rgba(255, 20, 147, 0.1),
       transparent 65%
@@ -453,7 +503,8 @@ footer {
 }
 
 .playoff-box {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       125deg,
       rgba(147, 0, 77, 0.9),
       rgba(23, 7, 26, 0.94)
@@ -508,11 +559,12 @@ footer {
   line-height: 1.8;
 }
 
-/* Tabulka */
+/* Původní tabulka */
 
 .standings {
   overflow: hidden;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at 100% 0%,
       rgba(255, 20, 147, 0.25),
       transparent 45%
@@ -584,7 +636,8 @@ footer {
   font-size: 18px;
 }
 
-.league-table caption {
+.league-table caption,
+.fs-table caption {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -592,14 +645,14 @@ footer {
   clip-path: inset(50%);
 }
 
-.league-table thead {
-  background: rgba(255, 20, 147, 0.12);
-}
-
 .league-table th,
 .league-table td {
   padding: 15px 10px;
   text-align: center;
+}
+
+.league-table thead {
+  background: rgba(255, 20, 147, 0.12);
 }
 
 .league-table thead th {
@@ -639,6 +692,223 @@ footer {
   color: #c9bcc5;
   font-size: 12px;
   margin: 16px 0 0;
+  text-align: center;
+}
+
+/* Nová závěrečná tabulka Sudety Cupu */
+
+.flamingos-standings {
+  overflow: hidden;
+  margin: 25px 0 40px;
+  padding: 26px;
+  color: #fff;
+  background:
+    radial-gradient(
+      ellipse at top right,
+      rgba(255, 20, 147, 0.2),
+      transparent 60%
+    ),
+    #100b13;
+  border: 1px solid #ff4da6;
+  border-radius: 16px;
+  box-shadow:
+    inset 4px 0 0 var(--pink),
+    0 0 28px rgba(255, 20, 147, 0.15);
+}
+
+.fs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.fs-label {
+  color: var(--light-pink);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.fs-header h3 {
+  margin: 10px 0;
+  color: #fff;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: normal;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.fs-header p {
+  margin: 0;
+  color: #c9bac5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.fs-trophy {
+  flex-shrink: 0;
+  font-size: 46px;
+}
+
+.fs-highlight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 18px;
+  background: linear-gradient(110deg, #7a0849, #280d21);
+  border: 1px solid #ff4da6;
+  border-radius: 12px;
+}
+
+.fs-highlight > img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(255, 20, 147, 0.5);
+}
+
+.fs-highlight > div:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+
+.fs-highlight > div:nth-child(2) > strong {
+  display: block;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.fs-highlight > div:nth-child(2) > span {
+  display: block;
+  margin-top: 5px;
+  color: #f4d9e8;
+  font-size: 13px;
+}
+
+.fs-points {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.fs-points strong {
+  display: block;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.fs-points span {
+  display: block;
+  margin-top: 6px;
+  color: #ffc3e2;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.fs-scroll {
+  overflow-x: auto;
+  border: 1px solid rgba(255, 77, 166, 0.35);
+  border-radius: 10px;
+}
+
+.fs-scroll:focus-visible {
+  outline: 3px solid var(--light-pink);
+  outline-offset: 4px;
+}
+
+.fs-table {
+  width: 100%;
+  min-width: 440px;
+  border-collapse: collapse;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fs-table th,
+.fs-table td {
+  padding: 17px 12px;
+  text-align: center;
+}
+
+.fs-table thead {
+  color: #ff99cc;
+  background: #24101e;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.fs-table thead th:nth-child(2),
+.fs-table tbody th {
+  text-align: left;
+}
+
+.fs-table tbody th {
+  font-weight: normal;
+}
+
+.fs-table tbody tr {
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 77, 166, 0.18);
+}
+
+.fs-table tbody tr:nth-child(even) {
+  background: rgba(255, 20, 147, 0.045);
+}
+
+.fs-table tbody td:first-child {
+  color: #b8a6b3;
+}
+
+.fs-table tbody td:nth-child(4) {
+  color: #ff99cc;
+}
+
+.fs-table tbody td:last-child {
+  color: var(--light-pink);
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.fs-table tbody .fs-our-team {
+  background: linear-gradient(90deg, #b00866, #650b40);
+  box-shadow: inset 4px 0 0 #ff9bce;
+}
+
+.fs-table .fs-our-team th,
+.fs-table .fs-our-team td {
+  color: #fff;
+  font-weight: bold;
+}
+
+.fs-team-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fs-team-name img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.fs-table tbody td.fs-negative {
+  color: #c6a4b7;
+}
+
+.flamingos-standings .fs-legend {
+  margin: 18px 0 0;
+  color: #bdaeba;
+  font-size: 12px;
+  line-height: 1.6;
   text-align: center;
 }
 
@@ -732,7 +1002,132 @@ footer {
   line-height: 1.5;
 }
 
-/* Telefon */
+/* Kontakty – vedení klubu */
+
+.club-contacts,
+.club-socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.club-contact {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  background:
+    linear-gradient(
+      110deg,
+      rgba(10, 5, 14, 0.96),
+      rgba(38, 4, 25, 0.88)
+    ),
+    var(--stadium) center / cover no-repeat;
+  border: 1px solid var(--pink);
+  border-radius: 12px;
+  box-shadow:
+    inset 4px 0 0 var(--pink),
+    0 0 20px rgba(255, 20, 147, 0.12);
+}
+
+.club-contact::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -55px;
+  top: -55px;
+  border: 1px solid rgba(255, 20, 147, 0.35);
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(255, 20, 147, 0.15);
+  pointer-events: none;
+}
+
+.contact-role {
+  display: block;
+  color: var(--light-pink);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  line-height: 1.6;
+}
+
+.club-contact h3 {
+  margin: 12px 0 22px;
+  color: white;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  background: rgba(255, 20, 147, 0.1);
+  border: 1px solid rgba(255, 20, 147, 0.45);
+  border-radius: 8px;
+}
+
+.contact-phone > span {
+  color: var(--light-pink);
+  font-size: 23px;
+}
+
+.club-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(120deg, #350b26, #120a16);
+  border: 1px solid var(--pink);
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 20, 147, 0.12);
+}
+
+.contact-symbol {
+  flex: 0 0 35px;
+  color: var(--pink);
+  font-size: 35px;
+  text-align: center;
+}
+
+.contact-social-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-social-text strong {
+  display: block;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.contact-social-text > span {
+  display: block;
+  margin-top: 7px;
+  color: #e1cbd8;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.contact-phone:hover,
+.club-social:hover {
+  background: #650038;
+  border-color: #ff9bce;
+}
+
+/* Zobrazení na telefonu */
 
 @media (max-width: 600px) {
   header {
@@ -820,296 +1215,51 @@ footer {
   .league-table tbody td:last-child {
     font-size: 19px;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
+  .flamingos-standings {
+    padding: 16px;
   }
-}
-/* Odstranění kresleného stadionu */
-:root {
-  --stadium: none !important;
-}
-/* Skutečná fotografie našeho hřiště */
-:root {
-  --stadium: url("./stadion.jpg") !important;
-}
 
-body {
-  background: linear-gradient(rgba(8, 5, 12, 0.88), rgba(20, 4, 15, 0.94)),
-    var(--stadium) center / cover no-repeat;
-}
+  .fs-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
 
-header {
-  background: linear-gradient(
-      135deg,
-      rgba(60, 0, 32, 0.65),
-      rgba(8, 5, 12, 0.78)
-    ),
-    var(--stadium) center 65% / cover no-repeat;
-}
+  .fs-trophy {
+    font-size: 32px;
+  }
 
-.home-link::before {
-  background-image: var(--stadium);
-  background-position: center 70%;
-  background-size: cover;
-  opacity: 0.7;
-}
+  .fs-highlight {
+    gap: 10px;
+    padding: 14px 10px;
+  }
 
-/* U těchto karet ponecháme klubové logo */
-.home-link.team-link::before,
-.home-link.about-link::before {
-  background-image: url("./logo.png");
-  background-position: 90% center;
-  background-size: 150px;
-  background-repeat: no-repeat;
-}
-/* Vlastní fotografie v okýnkách na úvodu */
-.home-link.news-link::before {
-  background-image: url("./menu-aktuality.jpg");
-  background-position: center 35%;
-}
+  .fs-highlight > img {
+    width: 42px;
+    height: 42px;
+  }
 
-.home-link.results-link::before {
-  background-image: url("./menu-vysledky.jpg");
-  background-position: center 25%;
-}
+  .fs-highlight > div:nth-child(2) > strong {
+    font-size: 19px;
+  }
 
-.home-link.matches-link::before {
-  background-image: url("./menu-zapasy.jpg");
-  background-position: center 40%;
-}
+  .fs-highlight > div:nth-child(2) > span {
+    font-size: 11px;
+  }
 
-.home-link.team-link::before {
-  background-image: url("./menu-tym.jpg");
-  background-position: center 30%;
-}
+  .fs-points strong {
+    font-size: 30px;
+  }
 
-.home-link.gallery-link::before {
-  background-image: url("./menu-galerie.jpg");
-  background-position: center 40%;
-}
+  .fs-table {
+    font-size: 14px;
+  }
 
-.home-link.contact-link::before {
-  background-image: url("./menu-kontakt.jpg");
-  background-position: center 30%;
-}
+  .fs-table th,
+  .fs-table td {
+    padding: 14px 9px;
+  }
 
-/* Stejné zobrazení všech šesti fotografií */
-.home-link:is(
-    .news-link,
-    .results-link,
-    .matches-link,
-    .team-link,
-    .gallery-link,
-    .contact-link
-  )::before {
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.85;
-}
-
-/* Ztmavení pod textem a jemný růžový nádech */
-.home-link::after {
-  background: linear-gradient(
-    90deg,
-    rgba(8, 5, 12, 0.94) 0%,
-    rgba(8, 5, 12, 0.76) 45%,
-    rgba(50, 0, 28, 0.35) 100%
-  );
-}
-
-.home-link-title,
-.home-link-description {
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
-}
-/* Nové fotografie pro čtyři okýnka */
-.home-link.news-link::before {
-  background-image: url("./aktuality-nove.jpg");
-  background-position: center 35%;
-}
-
-.home-link.results-link::before {
-  background-image: url("./vysledky-nove.jpg");
-  background-position: center 35%;
-}
-
-.home-link.matches-link::before {
-  background-image: url("./zapasy-nove.jpg");
-  background-position: center 30%;
-}
-
-.home-link.gallery-link::before {
-  background-image: url("./galerie-nove.jpg");
-  background-position: center 35%;
-}
-
-/* Výraznější fotky v těchto čtyřech okýnkách */
-.home-link:is(.news-link, .results-link, .matches-link, .gallery-link)::before {
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 1;
-}
-
-.home-link:is(.news-link, .results-link, .matches-link, .gallery-link)::after {
-  background: linear-gradient(
-    90deg,
-    rgba(8, 5, 12, 0.88) 0%,
-    .home-link.news-link::before {
-  background-image: url("./aktuality-nove.jpeg");
-}
-
-.home-link.results-link::before {
-  background-image: url("./vysledky-nove.jpeg");
-}
-
-.home-link.matches-link::before {
-  background-image: url("./zapasy-nove.jpeg");
-}
-
-.home-link.team-link::before {
-  background-image: url("./menu-tym.jpeg");
-}
-
-.home-link.gallery-link::before {
-  background-image: url("./galerie-nove.jpeg");
-}
-
-.home-link.contact-link::before {
-  background-image: url("./menu-kontakt.jpeg");
-}
-    rgba(8, 5, 12, 0.6) 45%,
-    rgba(30, 0, 18, 0.15) 100%
-  );
-}
-/* Kontakty – vedení klubu */
-.club-contacts,
-.club-socials {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 25px;
-}
-
-.club-contact {
-  position: relative;
-  overflow: hidden;
-  padding: 28px;
-  background:
-    linear-gradient(
-      110deg,
-      rgba(10, 5, 14, 0.96),
-      rgba(38, 4, 25, 0.88)
-    ),
-    url("./stadion.jpg") center / cover no-repeat;
-  border: 1px solid #ff1493;
-  border-radius: 12px;
-  box-shadow:
-    inset 4px 0 0 #ff1493,
-    0 0 20px rgba(255, 20, 147, 0.12);
-}
-
-.club-contact::after {
-  content: "";
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  right: -55px;
-  top: -55px;
-  border: 1px solid rgba(255, 20, 147, 0.35);
-  border-radius: 50%;
-  box-shadow: 0 0 35px rgba(255, 20, 147, 0.15);
-  pointer-events: none;
-}
-
-.contact-role {
-  display: block;
-  color: #ff79bb;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1.2px;
-  line-height: 1.6;
-}
-
-.club-contact h3 {
-  margin: 12px 0 22px;
-  color: white;
-  font-size: 25px;
-  line-height: 1.25;
-}
-
-.contact-phone {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  padding: 10px 14px;
-  color: white;
-  font-size: 16px;
-  text-decoration: none;
-  background: rgba(255, 20, 147, 0.10);
-  border: 1px solid rgba(255, 20, 147, 0.45);
-  border-radius: 8px;
-}
-
-.contact-phone > span {
-  color: #ff79bb;
-  font-size: 23px;
-}
-
-.club-social {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 24px;
-  color: white;
-  text-decoration: none;
-  background: linear-gradient(120deg, #350b26, #120a16);
-  border: 1px solid #ff1493;
-  border-radius: 12px;
-  box-shadow: 0 0 18px rgba(255, 20, 147, 0.12);
-}
-
-.contact-symbol {
-  flex: 0 0 35px;
-  color: #ff1493;
-  font-size: 35px;
-  text-align: center;
-}
-
-.contact-social-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.contact-social-text strong {
-  display: block;
-  font-family: Impact, "Arial Narrow", Arial, sans-serif;
-  font-size: 22px;
-  font-weight: normal;
-  font-style: italic;
-  letter-spacing: 0.5px;
-}
-
-.contact-social-text > span {
-  display: block;
-  margin-top: 7px;
-  color: #e1cbd8;
-  font-size: 14px;
-  overflow-wrap: anywhere;
-}
-
-.contact-phone:hover,
-.club-social:hover {
-  background: #650038;
-  border-color: #ff9bce;
-}
-
-@media (max-width: 600px) {
   .club-contacts,
   .club-socials {
     grid-template-columns: 1fr;
@@ -1123,5 +1273,16 @@ header {
 
   .club-contact h3 {
     font-size: 23px;
+  }
+}
+
+/* Omezení animací podle nastavení zařízení */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
