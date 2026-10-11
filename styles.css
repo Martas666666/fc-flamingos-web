@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -42,13 +46,27 @@ h1 {
 }
 
 .menu-content {
-  display: none;
+  display: flex;
   flex-direction: column;
   background: #111;
   border: 2px solid #ff1493;
   border-radius: 10px;
   margin-top: 8px;
   padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  max-height: calc(100dvh - 95px);
+  overflow-y: auto;
+}
+
+.menu-content.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .menu-content button {
@@ -58,12 +76,21 @@ h1 {
   padding: 10px;
   margin: 4px 0;
   cursor: pointer;
-  width: 170px;
+  width: 190px;
   border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
 }
 
-.menu-content.show {
-  display: flex;
+.menu-content button:hover,
+.menu-content button[aria-current="page"] {
+  background: #720944;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #ff4da6;
+  outline-offset: 3px;
 }
 
 section {
@@ -75,11 +102,29 @@ section {
 
 section.active {
   display: block;
+  animation: section-in 0.25s ease both;
+}
+
+@keyframes section-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h2 {
   color: #ff1493;
   font-size: 34px;
+}
+
+section > p,
+.card p {
+  font-size: 18px;
+  line-height: 1.7;
 }
 
 .card {
@@ -93,6 +138,7 @@ h2 {
 a {
   color: #ff1493;
   font-weight: bold;
+  overflow-wrap: anywhere;
 }
 
 footer {
@@ -100,6 +146,7 @@ footer {
   padding: 25px;
   color: #aaa;
 }
+
 .position-title {
   color: white;
   margin-top: 35px;
@@ -110,7 +157,7 @@ footer {
 
 .players-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
   gap: 20px;
   margin-top: 20px;
 }
@@ -133,21 +180,10 @@ footer {
   border-radius: 12px;
   margin-bottom: 12px;
 }
+
 .player-card h3 {
   color: #ff1493;
   margin-bottom: 10px;
-}
-.table-box {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.tabulka {
-  width: 100%;
-  max-width: 850px;
-  border-radius: 18px;
-  border: 2px solid #ff1493;
-  box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
 }
 
 .round-box {
@@ -161,7 +197,7 @@ footer {
 
 .round-box h3 {
   color: #ff4da6;
-  margin-bottom: 15px;
+  margin: 0 0 15px;
   font-size: 26px;
 }
 
@@ -169,11 +205,13 @@ footer {
   color: white;
   font-size: 18px;
   margin: 10px 0;
+  line-height: 1.5;
 }
 
 .round-box b {
   color: #ff1493;
 }
+
 .playoff-box {
   background: linear-gradient(135deg, #ff1493, #8b0058);
   border: 2px solid #ff4da6;
@@ -185,9 +223,26 @@ footer {
   font-size: 30px;
 }
 
-.playoff-box p {
-  font-size: 19px;
+.playoff-match {
+  padding: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 15px;
 }
+
+.playoff-match h4 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.playoff-box .achievement {
+  font-size: 22px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
 .news-card {
   background: #141414;
   border: 2px solid #ff1493;
@@ -207,4 +262,325 @@ footer {
   color: white;
   font-size: 18px;
   line-height: 1.7;
+}
+
+/* Tabulka po 12 kolech */
+
+.standings {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(
+      ellipse at 100% 0%,
+      rgba(255, 20, 147, 0.3),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 0% 100%,
+      rgba(255, 20, 147, 0.18),
+      transparent 40%
+    ),
+    #101014;
+  border: 2px solid #ff4da6;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 25px rgba(255, 20, 147, 0.25);
+}
+
+.standings-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.season-label span {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.season-label > strong {
+  display: block;
+  font-size: 76px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px #ffb1d9;
+  text-shadow: 0 0 22px rgba(255, 20, 147, 0.6);
+}
+
+.competition-label {
+  text-align: center;
+}
+
+.competition-icon {
+  display: block;
+  font-size: 54px;
+  margin-bottom: 8px;
+}
+
+.competition-label strong {
+  font-size: 21px;
+}
+
+.competition-label strong span {
+  color: #ff4da6;
+}
+
+.round-label {
+  text-align: right;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 2px solid #ff4da6;
+  border-radius: 12px;
+}
+
+.league-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+  font-size: 19px;
+}
+
+.league-table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.league-table thead {
+  background: rgba(255, 20, 147, 0.12);
+}
+
+.league-table th,
+.league-table td {
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.league-table thead th {
+  color: #ff8bc5;
+  font-size: 17px;
+}
+
+.league-table th:nth-child(2) {
+  text-align: left;
+}
+
+.league-table tbody th {
+  font-weight: normal;
+}
+
+.league-table tbody tr {
+  border-top: 1px solid rgba(255, 77, 166, 0.55);
+}
+
+.league-table tbody td:last-child {
+  color: #ff6bac;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.league-table .flamingos-row {
+  background: linear-gradient(90deg, #ff1493, #b30a64);
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.2);
+}
+
+.league-table .flamingos-row th,
+.league-table .flamingos-row td {
+  color: white;
+  font-weight: bold;
+}
+
+.table-legend {
+  color: #ccc;
+  font-size: 13px;
+  margin: 16px 0 0;
+  text-align: center;
+}
+
+/* Fotogalerie */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.gallery-grid figure {
+  margin: 0;
+  overflow: hidden;
+  border: 2px solid #ff1493;
+  border-radius: 14px;
+  background: #151515;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 240px;
+  display: block;
+  object-fit: cover;
+}
+
+.gallery-grid figcaption {
+  padding: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .standings {
+    padding: 14px;
+  }
+
+  .standings-header {
+    gap: 8px;
+  }
+
+  .season-label span {
+    font-size: 13px;
+  }
+
+  .season-label > strong {
+    font-size: 52px;
+  }
+
+  .competition-icon {
+    font-size: 34px;
+  }
+
+  .competition-label strong {
+    font-size: 13px;
+  }
+
+  .round-label {
+    font-size: 18px;
+  }
+
+  .league-table {
+    font-size: 15px;
+  }
+
+  .league-table th,
+  .league-table td {
+    padding: 13px 7px;
+  }
+
+  .league-table tbody td:last-child {
+    font-size: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-content,
+  .menu-content button {
+    transition: none;
+  }
+
+  section.active {
+    animation: none;
+  }
+}
+.photo-albums {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.album-card {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background: linear-gradient(145deg, #1c1219, #111);
+  border: 2px solid #ff1493;
+  border-radius: 18px;
+  box-shadow: 0 0 18px rgba(255, 20, 147, 0.18);
+}
+
+.album-label {
+  color: #ff85c2;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.album-card h3 {
+  color: #ff4da6;
+  font-size: 27px;
+  margin: 15px 0 8px;
+}
+
+.album-card p {
+  line-height: 1.6;
+}
+
+.album-card .album-date {
+  color: #ccc;
+  margin: 0 0 18px;
+}
+
+.album-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.album-links a {
+  display: block;
+  padding: 13px 16px;
+  color: white;
+  background: #27101e;
+  border: 1px solid #ff1493;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.album-links a:hover {
+  background: #b80065;
+  transform: translateY(-2px);
+}
+
+.album-links a:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.album-playoff {
+  background: linear-gradient(135deg, #6f003e, #21101b);
+  box-shadow: 0 0 24px rgba(255, 20, 147, 0.35);
+}
+
+.album-playoff h3 {
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album-links a {
+    transition: none;
+  }
+
+  .album-links a:hover {
+    transform: none;
+  }
 }
