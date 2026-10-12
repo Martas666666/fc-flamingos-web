@@ -327,3 +327,59 @@ document.addEventListener("keydown", (event) => {
 
 setMenu(false);
 updateMenuSelection(document.querySelector("section.active")?.id || "home");
+/* Sponzoři a odstranění textu pod úvodními kartami */
+
+(function addSponsorsNavigation() {
+  const homeSection = document.getElementById("home");
+  const homeNavigation = homeSection?.querySelector(".home-links");
+  const dropdown = document.getElementById("menu-content");
+
+  if (
+    homeNavigation &&
+    !homeNavigation.querySelector(".sponsors-link")
+  ) {
+    const sponsorButton = document.createElement("button");
+
+    sponsorButton.type = "button";
+    sponsorButton.className = "home-link sponsors-link";
+    sponsorButton.setAttribute("aria-controls", "sponsors");
+
+    sponsorButton.innerHTML = `
+      <span class="home-link-icon" aria-hidden="true">🤝</span>
+      <span class="home-link-text">
+        <span class="home-link-title">Sponzoři</span>
+        <span class="home-link-description">
+          Partneři, kteří podporují Růžový balet
+        </span>
+      </span>
+      <span class="home-link-arrow" aria-hidden="true">›</span>
+    `;
+
+    sponsorButton.addEventListener("click", function () {
+      showSection("sponsors");
+    });
+
+    homeNavigation.appendChild(sponsorButton);
+  }
+
+  if (
+    dropdown &&
+    !dropdown.querySelector('[aria-controls="sponsors"]')
+  ) {
+    const menuItem = document.createElement("button");
+
+    menuItem.type = "button";
+    menuItem.textContent = "Sponzoři";
+    menuItem.setAttribute("aria-controls", "sponsors");
+    menuItem.setAttribute("onclick", "showSection('sponsors')");
+
+    dropdown.appendChild(menuItem);
+  }
+
+  if (homeSection) {
+    homeSection.querySelectorAll(":scope > h2, :scope > p")
+      .forEach(function (element) {
+        element.remove();
+      });
+  }
+})();
