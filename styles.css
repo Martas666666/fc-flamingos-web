@@ -1555,7 +1555,115 @@ footer {
   .sponsor-logo {
     height: 250px;
   }
+/* Výzva pro nové sponzory na úvodu */
 
+.sponsor-callout {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: 30px;
+  background: linear-gradient(120deg, #a8005b, #480b32 65%, #170c1b);
+  border: 1px solid #ff79bb;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 20, 147, 0.2);
+}
+
+.sponsor-callout-label,
+.sponsor-news-label {
+  display: block;
+  color: #ffd5eb;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  line-height: 1.6;
+}
+
+#home .sponsor-callout h2 {
+  margin: 12px 0;
+  color: white;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.sponsor-callout p {
+  max-width: 650px;
+  margin: 0 0 22px;
+  color: #ffe5f2;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.sponsor-callout button {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 46px;
+  padding: 13px 18px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  background: #150a13;
+  border: 1px solid #ff9bce;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sponsor-callout button:hover {
+  background: #650038;
+}
+
+.sponsor-callout button > span {
+  font-size: 22px;
+}
+
+/* Článek o sponzorství */
+
+.sponsor-news {
+  border-left: 4px solid #ff1493;
+}
+
+.sponsor-news-label {
+  color: #ff79bb;
+}
+
+.sponsor-news h4 {
+  margin: 26px 0 8px;
+  color: #ff79bb;
+  font-size: 20px;
+}
+
+.sponsor-news-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 16px;
+  color: white;
+  text-decoration: none;
+  line-height: 1.5;
+  background: #350b26;
+  border: 1px solid #ff1493;
+  border-radius: 8px;
+}
+
+.sponsor-news-contact:hover {
+  background: #650038;
+}
+
+.sponsor-news-contact > span {
+  flex-shrink: 0;
+  font-size: 24px;
+}
+
+@media (max-width: 600px) {
+  .sponsor-callout {
+    padding: 24px 20px;
+  }
+}
   .sponsor-content {
     padding: 22px;
   }
