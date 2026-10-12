@@ -1668,3 +1668,125 @@ footer {
     padding: 22px;
   }
 }
+/* Výrazný banner: Hledáme sponzory */
+
+#home .sponsor-callout {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 28px 0 0;
+  padding: 36px;
+  background:
+    radial-gradient(
+      ellipse at right top,
+      rgba(255, 20, 147, 0.24),
+      transparent 65%
+    ),
+    linear-gradient(120deg, #200b1b, #100a13);
+  border: 1px solid #ff1493;
+  border-radius: 14px;
+  box-shadow:
+    inset 4px 0 0 #ff1493,
+    0 0 24px rgba(255, 20, 147, 0.14);
+}
+
+#home .sponsor-callout::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 230px;
+  height: 230px;
+  right: -90px;
+  top: -100px;
+  border: 1px solid rgba(255, 20, 147, 0.35);
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(255, 20, 147, 0.15);
+  pointer-events: none;
+}
+
+#home .sponsor-callout-label {
+  display: block;
+  color: #ff91c8;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+  line-height: 1.6;
+}
+
+#home .sponsor-callout h2 {
+  margin: 14px 0 16px;
+  color: #fff;
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.1;
+  text-shadow: 2px 2px 0 #790641;
+}
+
+#home .sponsor-callout p {
+  max-width: 650px;
+  margin: 0 0 26px;
+  color: #e7d5e0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+#home .sponsor-callout button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  min-height: 54px;
+  padding: 16px 24px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(120deg, #b80061, #95004f);
+  border: 1px solid #ff79bb;
+  border-radius: 9px;
+  box-shadow: 0 5px 22px rgba(255, 20, 147, 0.3);
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+#home .sponsor-callout button > span {
+  font-size: 25px;
+  line-height: 1;
+}
+
+#home .sponsor-callout button:hover {
+  background: #cb006c;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 28px rgba(255, 20, 147, 0.45);
+}
+
+#home .sponsor-callout button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 5px;
+}
+
+@media (max-width: 600px) {
+  #home .sponsor-callout {
+    margin-top: 22px;
+    padding: 26px 22px;
+  }
+
+  #home .sponsor-callout button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home .sponsor-callout button {
+    transition: none;
+  }
+
+  #home .sponsor-callout button:hover {
+    transform: none;
+  }
+}
