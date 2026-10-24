@@ -32,6 +32,17 @@
 .joma-article{border-left:4px solid #ff1493;scroll-margin-top:25px;}
 .joma-article-image{margin:24px 0;}
 @media(max-width:700px){.joma-home-banner{grid-template-columns:1fr;padding:24px 20px;gap:22px;}.joma-home-banner button{width:100%;}}
+</style><style>
+.polis-home-banner{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);}
+#home .polis-home-banner figure{display:flex;justify-content:center;background:#09070a;border-radius:10px;overflow:hidden;}
+#home .polis-home-banner figure img{width:100%;height:480px;object-fit:contain;}
+.polis-article{border-left:4px solid #ff1493;scroll-margin-top:25px;}
+.polis-article p{line-height:1.8;}
+.polis-article h4{color:#ff91c8;font-size:20px;margin:28px 0 12px;}
+.polis-article-image{width:100%;max-width:520px;margin:26px auto;}
+.polis-article-image img{display:block;width:100%;height:auto;border-radius:10px;}
+.polis-article-image figcaption{margin-top:10px;color:#c7b3c0;font-size:13px;line-height:1.5;}
+@media(max-width:700px){.polis-home-banner{grid-template-columns:1fr;}#home .polis-home-banner figure img{height:auto;max-height:560px;}.polis-article h4{font-size:18px;}}
 </style></head>
 <body>
 <div class="menu">
@@ -61,11 +72,12 @@
 <p>Růžový balet 🏆🦩</p>
 </header>
 <section class="active" id="home">
-<div class="joma-home-banner">
-<div class="joma-banner-copy"><span class="joma-eyebrow">DĚKUJEME IMOBILIEN GROUP</span><h2>Nové soupravy.<br/>Další krok pro Flamingos.</h2>
-<p>Díky sponzorskému daru přibližně 20 000 Kč budeme mít klubové soupravy Joma s vlastním potiskem.</p>
-<button onclick="showJomaArticle()" type="button">Více o nových soupravách <span aria-hidden="true">↗</span></button></div>
-<figure><img alt="Návrh černých souprav Joma FC Flamingos s růžovým znakem a iniciálami pod klubovým logem." src="./joma-soupravy.png"/><figcaption>Orientační návrh klubového vybavení</figcaption></figure></div>
+<div class="joma-home-banner polis-home-banner">
+<div class="joma-banner-copy"><span class="joma-eyebrow">NOVÁ POSILA · VÍTEJ V RŮŽOVÉM!</span>
+<h2>Z akademie Slovanu<br/>do Flamingos. Vítej, Polisi!</h2>
+<p>Šestnáctiletý obránce se zkušenostmi z první dorostenecké ligy U17 posílí Růžový balet. Jeho první vystoupení v růžovém plánujeme už na prosincový Xmas Chaos Cup.</p>
+<button onclick="showPolisArticle()" type="button">Více o nové posile <span aria-hidden="true">↗</span></button></div>
+<figure><img alt="Polis při přivítání ve FC Flamingos s růžovým dresem. Klubová fotografie ze stories se znaky Slovanu Liberec a Flamingos." height="2048" src="./polis-flamingos.jpeg" width="1159"/></figure></div>
 </section>
 <section id="contact">
 <h2>Kontakt</h2>
@@ -105,11 +117,11 @@
 </article>
 </div>
 <div class="club-socials">
-<a class="club-social" href="mailto:fc.flamingos.lib@gmail.com">
+<a class="club-social" href="mailto:fc.flamingos.liberec@gmail.com">
 <span aria-hidden="true" class="contact-symbol">✉</span>
 <span class="contact-social-text">
 <strong>NAPIŠ NÁM</strong>
-<span>fc.flamingos.lib@gmail.com</span>
+<span>fc.flamingos.liberec@gmail.com</span>
 </span>
 <span aria-hidden="true">→</span>
 </a>
@@ -562,7 +574,19 @@
 </div>
 </section>
 <section id="news">
-<h2>Aktuality</h2><article class="news-card joma-article" id="novinky-joma">
+<h2>Aktuality</h2><article class="news-card polis-article" id="novinky-polis">
+<span class="joma-eyebrow">NOVÁ POSILA · FC FLAMINGOS</span>
+<h3>Posila z akademie Slovanu Liberec. Polis míří do Flamingos!</h3>
+<p><strong>Růžový balet vítá novou posilu! Přidává se k nám Polis, teprve šestnáctiletý talent a pilíř obrany z akademie FC Slovan Liberec.</strong> Máme radost, že náš tým rozšíří mladý hráč s chutí hrát a posouvat se dál.</p>
+<figure class="polis-article-image"><img alt="Polis a zástupce FC Flamingos společně drží růžový klubový dres při přivítání nové posily." height="2048" loading="lazy" src="./polis-flamingos.jpeg" width="1159"/><figcaption>Ze Slovanu do růžového. Vítej ve Flamingos, Polisi!</figcaption></figure>
+<h4>Zkušenosti z dorosteneckého fotbalu</h4>
+<p>Polis v současnosti hájí barvy <strong>FC Slovan Liberec ve druhé dorostenecké lize U17</strong>. Zkušenosti má také z <strong>první dorostenecké ligy U17</strong>. Do naší obrany tak přinese zkušenosti z akademického prostředí i mladou energii.</p>
+<h4>Zájem, který nás těší</h4>
+<p>O zapojení do FC Flamingos projevil Polis obrovský zájem a my jsme rádi, že si cestu k našemu klubu nacházejí i nadějní mladí hráči z akademií. Je to pro nás povzbuzení a další motivace pokračovat v práci, díky které se Růžový balet postupně posouvá dál.</p>
+<h4>Poprvé v růžovém už v prosinci</h4>
+<p>Na jeho první vystoupení v růžovém dresu se můžete těšit už na <strong>Xmas Chaos Cupu v prosinci 2026</strong>. Přijďte podpořit Flamingos a přivítat naši novou posilu!</p>
+<p><strong>Vítej mezi námi, Polisi. Těšíme se na společné zápasy!</strong></p>
+</article><article class="news-card joma-article" id="novinky-joma">
 <span class="joma-eyebrow">PARTNEŘI · KLUBOVÉ VYBAVENÍ</span>
 <h3>Imobilien Group posouvá Flamingos dál. Čekají nás nové soupravy Joma!</h3>
 <p>Máme obrovskou radost! Společnost <strong>Imobilien Group</strong> podpořila FC Flamingos sponzorským darem ve výši <strong>přibližně 20 000 Kč</strong>. Pro náš klub je to významná pomoc a další velký krok vpřed.</p>
@@ -582,7 +606,7 @@
 <p>Prezentaci vaší firmy na klubovém webu s logem a odkazem, zmínky a poděkování na našich sociálních sítích nebo společný obsah. Podle rozsahu spolupráce se můžeme domluvit také na umístění loga na dresech, klubovém oblečení či reklamních bannerech při akcích, kde to pořadatel umožní.</p>
 <p>Nemusí jít o velkou firmu ani vysokou částku. Rádi se domluvíme s místními podnikateli i většími společnostmi a připravíme spolupráci podle vašich možností.</p>
 <p><strong>Chcete být vidět společně s FC Flamingos? Napište nám a pojďme probrat možnosti!</strong></p>
-<a class="sponsor-news-contact" href="mailto:fc.flamingos.lib@gmail.com?subject=Spolupr%C3%A1ce%20s%20FC%20Flamingos">Napište nám: fc.flamingos.lib@gmail.com <span aria-hidden="true">↗</span></a>
+<a class="sponsor-news-contact" href="mailto:fc.flamingos.liberec@gmail.com?subject=Spolupr%C3%A1ce%20s%20FC%20Flamingos">Napište nám: fc.flamingos.liberec@gmail.com <span aria-hidden="true">↗</span></a>
 </article>
 <div class="news-card">
 <h3>Pro nadcházející sezónu Sudety Cupu 2026/27 chystáme B tým!</h3>
@@ -652,6 +676,18 @@ function showJomaArticle() {
   showSection('news');
   window.requestAnimationFrame(function () {
     const article = document.getElementById('novinky-joma');
+    if (!article) return;
+    const heading = article.querySelector('h3');
+    heading.setAttribute('tabindex', '-1');
+    heading.focus({preventScroll:true});
+    article.scrollIntoView({behavior:'instant',block:'start'});
+  });
+}
+</script><script>
+function showPolisArticle() {
+  showSection('news');
+  window.requestAnimationFrame(function () {
+    const article = document.getElementById('novinky-polis');
     if (!article) return;
     const heading = article.querySelector('h3');
     heading.setAttribute('tabindex', '-1');
