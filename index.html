@@ -2,6 +2,7 @@
 
 <html lang="cs">
 <head>
+<base href="/">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>FC Flamingos</title>
@@ -43,27 +44,55 @@
 .polis-article-image img{display:block;width:100%;height:auto;border-radius:10px;}
 .polis-article-image figcaption{margin-top:10px;color:#c7b3c0;font-size:13px;line-height:1.5;}
 @media(max-width:700px){.polis-home-banner{grid-template-columns:1fr;}#home .polis-home-banner figure img{height:auto;max-height:560px;}.polis-article h4{font-size:18px;}}
-</style></head>
-<body>
+</style><style>
+
+.menu-content a {
+  flex-shrink: 0;
+  padding: 13px 12px;
+  color: #fff;
+  text-align: left;
+  font-size: 15px;
+  background: #160d19;
+  border: 1px solid rgba(255, 20, 147, 0.3);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+
+.menu-content a:hover,
+.menu-content a[aria-current="page"] {
+  background: #720944;
+  border-color: var(--pink);
+}
+.menu-content a{text-decoration:none;display:block;font-weight:normal;}
+a.home-link{font-weight:normal;overflow-wrap:normal;}
+.joma-home-banner a.article-page-link{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:50px;padding:14px 18px;color:white;background:#b80061;border:1px solid #ff79bb;border-radius:9px;font-size:15px;font-weight:bold;text-decoration:none;cursor:pointer;}
+.joma-home-banner a.article-page-link:hover{background:#d00070;}
+@media(max-width:700px){.joma-home-banner a.article-page-link{width:100%;}}
+</style>
+</head>
+<body data-page="home">
 <div class="menu">
 <button aria-controls="menu-content" aria-expanded="false" aria-label="Otevřít menu" class="menu-btn" onclick="toggleMenu()" type="button">
         ☰
       </button>
 <div class="menu-content" id="menu-content">
-<button onclick="showSection('home')" type="button">Úvod</button>
-<button onclick="showSection('contact')" type="button">Kontakt</button>
-<button onclick="showSection('results')" type="button">
+<a href="/" data-section="home">Úvod</a>
+<a href="/kontakt/" data-section="contact">Kontakt</a>
+<a href="/tabulky-a-vysledky/" data-section="results">
           Tabulky a výsledky
-        </button>
-<button onclick="showSection('matches')" type="button">
+        </a>
+<a href="/nadchazejici-zapasy/" data-section="matches">
           Nadcházející zápasy
-        </button>
-<button onclick="showSection('team')" type="button">Tým</button>
-<button onclick="showSection('about')" type="button">O klubu</button>
-<button onclick="showSection('gallery')" type="button">
+        </a>
+<a href="/tym/" data-section="team">Tým</a>
+<a href="/o-klubu/" data-section="about">O klubu</a>
+<a href="/fotogalerie/" data-section="gallery">
           Fotogalerie
-        </button>
-<button onclick="showSection('news')" type="button">Aktuality</button>
+        </a>
+<a href="/aktuality/" data-section="news">Aktuality</a>
+<a href="/sponzori/" data-section="sponsors" aria-controls="sponsors">Sponzoři</a>
 </div>
 </div>
 <header>
@@ -71,12 +100,12 @@
 <h1>FC Flamingos</h1>
 <p>Růžový balet 🏆🦩</p>
 </header>
-<section class="active" id="home">
+<section id="home" class="active">
 <div class="joma-home-banner polis-home-banner">
 <div class="joma-banner-copy"><span class="joma-eyebrow">NOVÁ POSILA · VÍTEJ V RŮŽOVÉM!</span>
 <h2>Z akademie Slovanu<br/>do Flamingos. Vítej, Polisi!</h2>
 <p>Šestnáctiletý obránce se zkušenostmi z první dorostenecké ligy U17 posílí Růžový balet. Jeho první vystoupení v růžovém plánujeme už na prosincový Xmas Chaos Cup.</p>
-<button onclick="showPolisArticle()" type="button">Více o nové posile <span aria-hidden="true">↗</span></button></div>
+<a class="article-page-link" href="/aktuality/#novinky-polis">Více o nové posile <span aria-hidden="true">↗</span></a></div>
 <figure><img alt="Polis při přivítání ve FC Flamingos s růžovým dresem. Klubová fotografie ze stories se znaky Slovanu Liberec a Flamingos." height="2048" src="./polis-flamingos.jpeg" width="1159"/></figure></div>
 </section>
 <section id="contact">
@@ -695,5 +724,6 @@ function showPolisArticle() {
     article.scrollIntoView({behavior:'instant',block:'start'});
   });
 }
-</script></body>
+</script><script src="page-navigation.js"></script>
+</body>
 </html>
