@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<base href="/">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Aktuality | FC Flamingos</title>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+/* Oprava log: pevná plocha pro obrázek, text pod ní. */
+#sponsors .sponsor-card { display:flex; flex-direction:column; min-width:0; }
+#sponsors .sponsor-logo { display:block; flex:0 0 auto; width:100%; height:300px; padding:24px; overflow:hidden; background:#000; }
+#sponsors .sponsor-logo img { display:block; position:static; width:100%; height:252px; max-width:100%; max-height:252px; object-fit:contain; }
+#sponsors .sponsor-content { position:relative; flex:1; background:linear-gradient(120deg,#250c1d,#120a16); }
+.home-link.sponsors-link .home-link-icon { color:#ff1493; }
+.home-link.sponsors-link .home-link-icon svg { width:42px; height:42px; }
+@media(max-width:600px) {
+  #sponsors .sponsor-logo { height:270px; padding:20px; }
+  #sponsors .sponsor-logo img { height:230px; max-height:230px; }
+}
+</style>
+<style>
+.joma-home-banner {display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:28px;padding:30px;background:radial-gradient(ellipse at top left,#500d35,transparent 70%),#130b16;border:1px solid #ff1493;border-radius:14px;box-shadow:inset 4px 0 #ff1493,0 0 24px #ff149320;}
+.joma-eyebrow{display:block;color:#ff91c8;font-size:11px;font-weight:bold;letter-spacing:1.5px;line-height:1.6;}
+#home .joma-home-banner h2{margin:14px 0;color:white;font-family:Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(28px,4vw,40px);font-weight:normal;font-style:italic;line-height:1.15;}
+.joma-banner-copy p{color:#ead8e3;font-size:16px;line-height:1.7;margin:0 0 22px;}
+.joma-home-banner button,.joma-partner-link{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:50px;padding:14px 18px;color:white;background:#b80061;border:1px solid #ff79bb;border-radius:9px;font-size:15px;font-weight:bold;text-decoration:none;cursor:pointer;}
+.joma-home-banner button:hover,.joma-partner-link:hover{background:#d00070;}
+.joma-home-banner figure,.joma-article-image{margin:0;min-width:0;}
+.joma-home-banner figure img,.joma-article-image img{display:block;width:100%;height:auto;max-width:100%;border-radius:9px;}
+.joma-home-banner figcaption,.joma-article-image figcaption{margin-top:9px;color:#c7b3c0;font-size:11px;line-height:1.5;}
+.joma-article{border-left:4px solid #ff1493;scroll-margin-top:25px;}
+.joma-article-image{margin:24px 0;}
+@media(max-width:700px){.joma-home-banner{grid-template-columns:1fr;padding:24px 20px;gap:22px;}.joma-home-banner button{width:100%;}}
+</style><style>
+.polis-home-banner{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);}
+#home .polis-home-banner figure{display:flex;justify-content:center;background:#09070a;border-radius:10px;overflow:hidden;}
+#home .polis-home-banner figure img{width:100%;height:480px;object-fit:contain;}
+.polis-article{border-left:4px solid #ff1493;scroll-margin-top:25px;}
+.polis-article p{line-height:1.8;}
+.polis-article h4{color:#ff91c8;font-size:20px;margin:28px 0 12px;}
+.polis-article-image{width:100%;max-width:520px;margin:26px auto;}
+.polis-article-image img{display:block;width:100%;height:auto;border-radius:10px;}
+.polis-article-image figcaption{margin-top:10px;color:#c7b3c0;font-size:13px;line-height:1.5;}
+@media(max-width:700px){.polis-home-banner{grid-template-columns:1fr;}#home .polis-home-banner figure img{height:auto;max-height:560px;}.polis-article h4{font-size:18px;}}
+</style><style>
+
+.menu-content a {
+  flex-shrink: 0;
+  padding: 13px 12px;
+  color: #fff;
+  text-align: left;
+  font-size: 15px;
+  background: #160d19;
+  border: 1px solid rgba(255, 20, 147, 0.3);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+
+.menu-content a:hover,
+.menu-content a[aria-current="page"] {
+  background: #720944;
+  border-color: var(--pink);
+}
+.menu-content a{text-decoration:none;display:block;font-weight:normal;}
+a.home-link{font-weight:normal;overflow-wrap:normal;}
+.joma-home-banner a.article-page-link{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:50px;padding:14px 18px;color:white;background:#b80061;border:1px solid #ff79bb;border-radius:9px;font-size:15px;font-weight:bold;text-decoration:none;cursor:pointer;}
+.joma-home-banner a.article-page-link:hover{background:#d00070;}
+@media(max-width:700px){.joma-home-banner a.article-page-link{width:100%;}}
+</style>
+</head>
+<body data-page="news">
+<div class="menu">
+<button aria-controls="menu-content" aria-expanded="false" aria-label="Otevřít menu" class="menu-btn" onclick="toggleMenu()" type="button">
+        ☰
+      </button>
+<div class="menu-content" id="menu-content">
+<a href="/" data-section="home">Úvod</a>
+<a href="/kontakt/" data-section="contact">Kontakt</a>
+<a href="/tabulky-a-vysledky/" data-section="results">
+          Tabulky a výsledky
+        </a>
+<a href="/nadchazejici-zapasy/" data-section="matches">
+          Nadcházející zápasy
+        </a>
+<a href="/tym/" data-section="team">Tým</a>
+<a href="/o-klubu/" data-section="about">O klubu</a>
+<a href="/fotogalerie/" data-section="gallery">
+          Fotogalerie
+        </a>
+<a href="/aktuality/" data-section="news">Aktuality</a>
+<a href="/sponzori/" data-section="sponsors" aria-controls="sponsors">Sponzoři</a>
+</div>
+</div>
+<header>
+<img alt="Logo FC Flamingos" class="logo" src="logo.png"/>
+<h1>FC Flamingos</h1>
+<p>Růžový balet 🏆🦩</p>
+</header>
+<section id="home">
+<div class="joma-home-banner polis-home-banner">
+<div class="joma-banner-copy"><span class="joma-eyebrow">NOVÁ POSILA · VÍTEJ V RŮŽOVÉM!</span>
+<h2>Z akademie Slovanu<br/>do Flamingos. Vítej, Polisi!</h2>
+<p>Šestnáctiletý obránce se zkušenostmi z první dorostenecké ligy U17 posílí Růžový balet. Jeho první vystoupení v růžovém plánujeme už na prosincový Xmas Chaos Cup.</p>
+<a class="article-page-link" href="/aktuality/#novinky-polis">Více o nové posile <span aria-hidden="true">↗</span></a></div>
+<figure><img alt="Polis při přivítání ve FC Flamingos s růžovým dresem. Klubová fotografie ze stories se znaky Slovanu Liberec a Flamingos." height="2048" src="./polis-flamingos.jpeg" width="1159"/></figure></div>
+</section>
+<section id="contact">
+<h2>Kontakt</h2>
+<p>Vedení Růžového baletu. Ozvi se nám!</p>
+<div class="club-contacts">
+<article class="club-contact">
+<span class="contact-role">CEO KLUBU</span>
+<h3>Matyáš František Hájek</h3>
+<a class="contact-phone" href="tel:+420725914956">
+<span aria-hidden="true">☎</span>
+        +420 725 914 956
+      </a>
+</article>
+<article class="club-contact">
+<span class="contact-role">PŘEDSEDA A JEDNATEL MUŽSTVA</span>
+<h3>Martin Kulhánek</h3>
+<a class="contact-phone" href="tel:+420721666181">
+<span aria-hidden="true">☎</span>
+        +420 721 666 181
+      </a>
+</article>
+<article class="club-contact">
+<span class="contact-role">MANAŽER KLUBU</span>
+<h3>Jiří Heiland</h3>
+<a class="contact-phone" href="tel:+420608160890">
+<span aria-hidden="true">☎</span>
+        +420 608 160 890
+      </a>
+</article>
+<article class="club-contact">
+<span class="contact-role">KUSTOD MUŽSTVA</span>
+<h3>Adrian Forgáč</h3>
+<a class="contact-phone" href="tel:+420606820745">
+<span aria-hidden="true">☎</span>
+        +420 606 820 745
+      </a>
+</article>
+</div>
+<div class="club-socials">
+<a class="club-social" href="mailto:fc.flamingos.liberec@gmail.com">
+<span aria-hidden="true" class="contact-symbol">✉</span>
+<span class="contact-social-text">
+<strong>NAPIŠ NÁM</strong>
+<span>fc.flamingos.liberec@gmail.com</span>
+</span>
+<span aria-hidden="true">→</span>
+</a>
+<a class="club-social" href="https://www.instagram.com/fc_flamingos_/" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="contact-symbol">◎</span>
+<span class="contact-social-text">
+<strong>SLEDUJ FLAMINGOS</strong>
+<span>@fc_flamingos_</span>
+</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a class="club-social" href="https://www.tiktok.com/@fc_flamingos_" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="contact-symbol">♪</span>
+<span class="contact-social-text">
+<strong>SLEDUJ NÁŠ TIKTOK</strong>
+<span>@fc_flamingos_</span>
+</span>
+<span aria-hidden="true">↗</span>
+</a>
+</div>
+</section>
+<section id="results">
+<h2>Tabulky a výsledky</h2>
+<a aria-label="Otevřít závěrečnou tabulku v plné velikosti" class="standings-image-link" href="./tabulka.png" rel="noopener noreferrer" target="_blank">
+<img alt="Závěrečná tabulka základní části Sudety Cupu, Season VI. FC Flamingos skončili čtvrtí se 41 body." class="standings-image" src="./tabulka.png"/>
+</a>
+<p class="standings-image-hint">
+    Kliknutím otevřeš tabulku v plné velikosti.
+  </p>
+<h3 class="results-heading">Výsledky základní části</h3>
+<div class="results-grid">
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>01. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FC Lidi</span><strong>1:0</strong></li>
+<li><span>SK Gamble</span><strong>1:0</strong></li>
+<li><span>FC Tysa</span><strong>1:1</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>02. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FK Fitmonci</span><strong>1:3</strong></li>
+<li><span>FC Real Chlastico</span><strong>3:0</strong></li>
+<li><span>FC Benfika B</span><strong>3:1</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>03. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>San Miguel C.F.</span><strong>0:4</strong></li>
+<li><span>FC Braničtí Rytíři</span><strong>1:3</strong></li>
+<li><span>Sudeťáci</span><strong>0:1</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>04. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FC Lidi</span><strong>3:3</strong></li>
+<li><span>SK Gamble</span><strong>3:4</strong></li>
+<li><span>FC Tysa</span><strong>1:0</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>05. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li>
+<span>FK Fitmonci<small>Dohráno v 11. kole</small></span>
+<strong>3:2</strong>
+</li>
+<li><span>FC Real Chlastico</span><strong>2:2</strong></li>
+<li><span>FC Benfika B</span><strong>1:0</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>06. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>San Miguel C.F.</span><strong>0:3</strong></li>
+<li><span>FC Braničtí Rytíři</span><strong>3:1</strong></li>
+<li><span>Sudeťáci</span><strong>2:0</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>07. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FC Lidi</span><strong>3:1</strong></li>
+<li><span>SK Gamble</span><strong>2:4</strong></li>
+<li><span>FC Tysa</span><strong>1:3</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>08. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FK Fitmonci</span><strong>2:1</strong></li>
+<li><span>FC Real Chlastico</span><strong>0:1</strong></li>
+<li><span>FC Benfika B</span><strong>1:5</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>09. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>San Miguel C.F.</span><strong>1:1</strong></li>
+<li><span>FC Braničtí Rytíři</span><strong>2:1</strong></li>
+<li><span>Sudeťáci</span><strong>3:0</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>10. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FC Lidi</span><strong>6:0</strong></li>
+<li><span>SK Gamble</span><strong>1:0</strong></li>
+<li><span>FC Tysa</span><strong>3:1</strong></li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>11. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>FK Fitmonci</span><strong>5:0</strong></li>
+<li><span>FC Real Chlastico</span><strong>0:0</strong></li>
+<li><span>FC Benfika B</span><strong>2:2</strong></li>
+<li>
+<span>FK Fitmonci<small>Dohrávka 5. kola</small></span>
+<strong>3:2</strong>
+</li>
+</ul>
+</article>
+<article class="result-round">
+<span class="result-round-label">SUDETY CUP · SEASON VI</span>
+<h3>12. kolo</h3>
+<p class="result-team-label">FC Flamingos proti:</p>
+<ul class="result-list">
+<li><span>San Miguel C.F.</span><strong>0:0</strong></li>
+<li><span>FC Braničtí Rytíři</span><strong>1:3</strong></li>
+<li><span>Sudeťáci</span><strong>0:1</strong></li>
+</ul>
+</article>
+</div>
+<div class="round-box playoff-box">
+<h3>🏆 Play-off Sudety Cupu</h3>
+<p><strong>20. 6. 2026</strong></p>
+<p>📍 Na Rozcestí — Vratislavice nad Nisou</p>
+<div class="playoff-match">
+<h4>Čtvrtfinále</h4>
+<p>FC Flamingos vs SK Gamble <strong>3:2</strong></p>
+</div>
+<div class="playoff-match">
+<h4>Semifinále</h4>
+<p>FC Flamingos vs San Miguel C. F. <strong>0:4</strong></p>
+</div>
+<div class="playoff-match">
+<h4>Zápas o třetí místo</h4>
+<p>FC Flamingos vs FC Braničtí Rytíři <strong>1:1</strong></p>
+<p>Po penaltách <strong>5:3</strong></p>
+</div>
+<p class="achievement">
+      🥉 V play-off jsme získali historické třetí místo!
+    </p>
+</div>
+</section>
+<section id="matches">
+<h2>Nadcházející zápasy</h2>
+<div class="round-box">
+<h3>Další zápasy připravujeme</h3>
+<p>
+      Termíny zápasů pro nadcházející sezónu brzy zveřejníme.
+      Sledujte náš web a sociální sítě, ať vám nic neunikne!
+    </p>
+</div>
+</section>
+<section id="team">
+<h2>Tým</h2>
+<h3 class="position-title">Brankáři</h3>
+<div class="players-grid">
+<div class="player-card">
+<img alt="Dmitriy Jerasov" src="dyma.jpg"/>
+<h3>Dmitriy Jerasov</h3>
+<p><strong>Pozice:</strong> Brankář</p>
+<p><strong>Číslo:</strong> 99</p>
+<p><strong>Věk:</strong> 23 let</p>
+<p>
+<strong>Statistiky:</strong> 11 čistých kont, 1 gól, 10 asistencí
+          </p>
+</div>
+<div class="player-card">
+<img alt="Lukáš Votruba" src="luky.jpg"/>
+<h3>Lukáš Votruba</h3>
+<p><strong>Pozice:</strong> Brankář</p>
+<p><strong>Číslo:</strong> 1</p>
+<p><strong>Věk:</strong> 17 let</p>
+<p><strong>Statistiky:</strong> 1 čisté konto</p>
+</div>
+</div>
+<h3 class="position-title">Obránci</h3>
+<div class="players-grid">
+<div class="player-card">
+<img alt="Martin Kulhánek" src="martin.jpg"/>
+<h3>Martin Kulhánek</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 66</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 4 góly, 5 asistencí</p>
+</div>
+<div class="player-card">
+<img alt="Ivo Rejnart" src="ivo.jpg"/>
+<h3>Ivo Rejnart</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 4</p>
+<p><strong>Věk:</strong> 20 let</p>
+<p><strong>Statistiky:</strong> -</p>
+</div>
+<div class="player-card">
+<img alt="Kristián Bohun" src="kris.jpg"/>
+<h3>Kristián Bohun</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 13</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 3 góly</p>
+</div>
+<div class="player-card">
+<img alt="Daniel Kott" src="kott.jpg"/>
+<h3>Daniel Kott</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 69</p>
+<p><strong>Věk:</strong> 21 let</p>
+<p><strong>Statistiky:</strong> 1 gól, 5 asistencí</p>
+</div>
+</div>
+<h3 class="position-title">Záložníci</h3>
+<div class="players-grid">
+<div class="player-card">
+<img alt="Fabián Abrt" src="fabi.jpg"/>
+<h3>Fabián Abrt</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 28</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 9 gólů, 4 asistence</p>
+</div>
+<div class="player-card">
+<img alt="Jiří Heiland" src="jirka.jpg"/>
+<h3>Jiří Heiland</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 11</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 1 asistence</p>
+</div>
+<div class="player-card">
+<img alt="Jan Albrecht" src="honza.jpg"/>
+<h3>Jan Albrecht</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 14</p>
+<p><strong>Věk:</strong> 17 let</p>
+<p><strong>Statistiky:</strong> 3 góly, 2 asistence</p>
+</div>
+<div class="player-card">
+<img alt="Matyáš František Hájek" src="hajek.jpg"/>
+<h3>Matyáš František Hájek</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 10</p>
+<p><strong>Věk:</strong> 20 let</p>
+<p><strong>Statistiky:</strong> 9 gólů, 15 asistencí</p>
+</div>
+<div class="player-card">
+<img alt="Jan Klust" src="klusty.jpg"/>
+<h3>Jan Klust</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 6</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 24 gólů, 7 asistencí</p>
+</div>
+</div>
+<h3 class="position-title">Útočníci</h3>
+<div class="players-grid">
+<div class="player-card">
+<img alt="Denis Dušek" src="dena.jpg"/>
+<h3>Denis Dušek</h3>
+<p><strong>Pozice:</strong> Útočník</p>
+<p><strong>Číslo:</strong> 27</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 8 gólů, 3 asistence</p>
+</div>
+<div class="player-card">
+<img alt="Ondřej Šimek" src="simek.jpg"/>
+<h3>Ondřej Šimek</h3>
+<p><strong>Pozice:</strong> Útočník</p>
+<p><strong>Číslo:</strong> 23</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 3 góly, 5 asistencí</p>
+</div>
+<div class="player-card">
+<img alt="Ondřej Průša" src="ondra.jpg"/>
+<h3>Ondřej Průša</h3>
+<p><strong>Pozice:</strong> Útočník</p>
+<p><strong>Číslo:</strong> 7</p>
+<p><strong>Věk:</strong> 20 let</p>
+<p><strong>Statistiky:</strong> 3 góly, 4 asistence</p>
+</div>
+<div class="player-card">
+<img alt="Adrián Forgáč" src="forgy.jpg"/>
+<h3>Adrián Forgáč</h3>
+<p><strong>Pozice:</strong> Útočník</p>
+<p><strong>Číslo:</strong> 8</p>
+<p><strong>Věk:</strong> 21 let</p>
+<p><strong>Statistiky:</strong> -</p>
+</div>
+</div>
+</section>
+<section id="about">
+<h2>O klubu</h2>
+<div class="card">
+<h3>Historie klubu</h3>
+<p>
+          FC Flamingos vznikl na podzim roku 2023 v Liberci. Klub založili
+          současný kapitán a historicky nejlepší střelec Matyáš František Hájek
+          a klubová legenda David Drobný.
+        </p>
+<p>
+          Začátky byly poměrně krušné a výsledky nebyly vždy příznivé. Během
+          následujících sezón se však výrazně proměnila kostra týmu. Přišla řada
+          opor, které pomohly klubu posunout se vpřed.
+        </p>
+<p>
+          Naše barvy jsou růžová a černá a přezdívka „Růžový balet“ k nám
+          neodmyslitelně patří. Působíme v soutěži Sudety Cup a dění kolem klubu
+          sdílíme také na sociálních sítích.
+        </p>
+</div>
+<div class="card">
+<h3>🥉 Historický úspěch</h3>
+<p>
+          V základní části Season VI jsme obsadili čtvrté místo se 41 body po 36
+          zápasech.
+        </p>
+<p>
+          V play-off Sudety Cupu 2026 jsme vybojovali historické třetí místo. Ve
+          čtvrtfinále jsme porazili SK Gamble 3:2. Po semifinálové porážce 0:4 s
+          San Miguel C. F. jsme v zápase o třetí místo remizovali s FC Braničtí
+          Rytíři 1:1 a penaltový rozstřel vyhráli 5:3, a zaslouženě jsem si tak
+          připsali historické třetí místo.
+        </p>
+</div>
+</section>
+<section id="gallery">
+<h2>Fotogalerie 2026/27</h2>
+<p>
+          Momentky ze zápasů, emoce i dění kolem hřiště. Vyber si kolo a otevři
+          celé fotoalbum na Zoneramě. Alba obsahují fotografie všech týmů Sudety
+          Cupu.
+        </p>
+<div class="photo-albums">
+<article class="album-card album-playoff">
+<span class="album-label">🏆 Play-off</span>
+<h3>Play-off Sudety Cupu</h3>
+<p class="album-date">20. 6. 2026</p>
+<p>
+              Vzpomínky na turnaj, ze kterého jsme přivezli historické třetí
+              místo.
+            </p>
+<div class="album-links">
+<a href="https://us.zonerama.com/kacikbofoto/Album/1000427813" rel="noopener noreferrer" target="_blank">📸 kacikbo.foto ↗</a>
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/15639155" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>12. kolo</h3>
+<p class="album-date">7. 6. 2026</p>
+<div class="album-links">
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/15531288" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>11. kolo</h3>
+<p class="album-date">31. 5. 2026</p>
+<div class="album-links">
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/15524873" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>Zápasy 10. května</h3>
+<p class="album-date">10. 5. 2026</p>
+<div class="album-links">
+<a href="https://us.zonerama.com/kacikbofoto/Album/1000411940" rel="noopener noreferrer" target="_blank">📸 kacikbo.foto ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>6. kolo</h3>
+<p class="album-date">26. 4. 2026</p>
+<div class="album-links">
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/15178739" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>5. kolo</h3>
+<p class="album-date">19. 4. 2026</p>
+<div class="album-links">
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/15133690" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>3. kolo</h3>
+<p class="album-date">29. 3. 2026</p>
+<div class="album-links">
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/15004577" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>2. kolo</h3>
+<p class="album-date">22. 3. 2026</p>
+<div class="album-links">
+<a href="https://us.zonerama.com/kacikbofoto/Album/1000388332" rel="noopener noreferrer" target="_blank">📸 kacikbo.foto ↗</a>
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/14965530" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+<article class="album-card">
+<span class="album-label">Sudety Cup · Season VI</span>
+<h3>1. kolo</h3>
+<p class="album-date">15. 3. 2026</p>
+<div class="album-links">
+<a href="https://eu.zonerama.com/SarkaMakovskaPhotogallery/Album/14915869" rel="noopener noreferrer" target="_blank">📸 Šárka Makovská ↗</a>
+</div>
+</article>
+</div>
+</section>
+<section id="news" class="active">
+<h2>Aktuality</h2>
+<article class="news-card polis-article be-announcement" id="flamingos-be">
+<span class="joma-eyebrow">KLUBOVÉ NOVINKY · FLAMINGOS BÉ</span>
+<h3>Jeden klub, dva týmy: představujeme FC Flamingos BÉ!</h3>
+<p><strong>Růžový balet se rozrůstá. Oficiálně otevíráme Flamingos BÉ, které bude fungovat po boku našeho Áčka.</strong> Zájem o růžový dres roste a na soupisce Sudety Cupu je jen 15 míst. S Béčkem můžeme dát prostor více hráčům a mladým talentům, kteří u nás chtějí sbírat zkušenosti.</p>
+<h4>David Drobný povede Béčko</h4>
+<p>Manažerem se stává <strong>David Drobný</strong>, spoluzakladatel Flamingos, autor klubového loga a člen Dvorany slávy. Povede organizaci týmu a zároveň nastupuje v útoku s číslem 7. Béčko bude mít vlastní vedení i prostor rozhodovat o svém fungování.</p>
+<h4>Stejné barvy, nové tváře</h4>
+<p>Na hřišti se můžeme potkat jako soupeři, na turnajích se ale budeme navzájem podporovat. Béčko má na úvod 11 hráčů. Teď se může sehrát, sbírat zkušenosti a ukázat, co v něm je.</p>
+<p><strong>Vítejte v růžové rodině, Flamingos BÉ! 🦩</strong></p>
+<a class="joma-partner-link" href="/tym/#b-tym">Prohlédnout soupisku Béčka <span aria-hidden="true">↗</span></a>
+</article>
+<article class="news-card polis-article" id="novinky-polis">
+<span class="joma-eyebrow">NOVÁ POSILA · FC FLAMINGOS</span>
+<h3>Posila z akademie Slovanu Liberec. Polis míří do Flamingos!</h3>
+<p><strong>Růžový balet vítá novou posilu! Přidává se k nám Polis, teprve šestnáctiletý talent a pilíř obrany z akademie FC Slovan Liberec.</strong> Máme radost, že náš tým rozšíří mladý hráč s chutí hrát a posouvat se dál.</p>
+<figure class="polis-article-image"><img alt="Polis a zástupce FC Flamingos společně drží růžový klubový dres při přivítání nové posily." height="2048" loading="lazy" src="./polis-flamingos.jpeg" width="1159"/><figcaption>Ze Slovanu do růžového. Vítej ve Flamingos, Polisi!</figcaption></figure>
+<h4>Zkušenosti z dorosteneckého fotbalu</h4>
+<p>Polis v současnosti hájí barvy <strong>FC Slovan Liberec ve druhé dorostenecké lize U17</strong>. Zkušenosti má také z <strong>první dorostenecké ligy U17</strong>. Do naší obrany tak přinese zkušenosti z akademického prostředí i mladou energii.</p>
+<h4>Zájem, který nás těší</h4>
+<p>O zapojení do FC Flamingos projevil Polis obrovský zájem a my jsme rádi, že si cestu k našemu klubu nacházejí i nadějní mladí hráči z akademií. Je to pro nás povzbuzení a další motivace pokračovat v práci, díky které se Růžový balet postupně posouvá dál.</p>
+<h4>Poprvé v růžovém už v prosinci</h4>
+<p>Na jeho první vystoupení v růžovém dresu se můžete těšit už na <strong>Xmas Chaos Cupu v prosinci 2026</strong>. Přijďte podpořit Flamingos a přivítat naši novou posilu!</p>
+<p><strong>Vítej mezi námi, Polisi. Těšíme se na společné zápasy!</strong></p>
+</article><article class="news-card joma-article" id="novinky-joma">
+<span class="joma-eyebrow">PARTNEŘI · KLUBOVÉ VYBAVENÍ</span>
+<h3>Imobilien Group posouvá Flamingos dál. Čekají nás nové soupravy Joma!</h3>
+<p>Máme obrovskou radost! Společnost <strong>Imobilien Group</strong> podpořila FC Flamingos sponzorským darem ve výši <strong>přibližně 20 000 Kč</strong>. Pro náš klub je to významná pomoc a další velký krok vpřed.</p>
+<p>Díky této podpoře budeme mít nové klubové vybavení značky <strong>Joma</strong>. Připravujeme černé mikiny, tepláky a šortky s růžovým znakem Flamingos a personalizací pro jednotlivé hráče. Iniciály a číslo, například <strong>MH10, MK66 nebo DJ99</strong>, budou umístěné pod klubovým logem. Na zádech mikiny zůstane nápis FC FLAMINGOS.</p>
+<figure class="joma-article-image"><img alt="Orientační návrh klubového balíčku Joma: mikina zepředu a zezadu, tepláky a šortky." loading="lazy" src="./joma-soupravy.png"/><figcaption>Orientační vizualizace — finální provedení se může lišit.</figcaption></figure>
+<p>Jednotné oblečení pro nás znamená víc než jen nový vzhled. Pomůže nám reprezentovat klub při cestách na zápasy i mimo hřiště a podtrhne to, co Flamingos spojuje — týmového ducha a chuť posouvat se dál.</p>
+<p><strong>Celé společnosti Imobilien Group děkujeme za důvěru a podporu. Velmi si vážíme toho, že nám pomáháte budovat další kapitolu Růžového baletu!</strong></p>
+<a class="joma-partner-link" href="http://www.imobilien.cz/html/onas.htm" rel="noopener noreferrer" target="_blank">Poznejte našeho partnera Imobilien Group ↗</a>
+</article>
+<article class="news-card sponsor-news">
+<span class="sponsor-news-label">SPOLUPRÁCE · FC FLAMINGOS</span>
+<h3>Hledáme partnery pro další kapitolu Růžového baletu!</h3>
+<p>FC Flamingos je klub malého fotbalu z Liberce. Od roku 2023 budujeme tým, který spojuje chuť hrát, týmového ducha a výrazné růžovo-černé barvy. Teď hledáme další partnery, kteří nám pomohou posunout klub dál.</p>
+<h4>Jak nás můžete podpořit?</h4>
+<p>Uvítáme finanční podporu na chod klubu, startovné v soutěžích a další rozvoj. Pomůže nám také materiální podpora — například dresy, tréninkové oblečení, míče nebo jiné sportovní vybavení. Prostor je i pro spolupráci formou služeb či společných akcí.</p>
+<h4>Co můžeme nabídnout?</h4>
+<p>Prezentaci vaší firmy na klubovém webu s logem a odkazem, zmínky a poděkování na našich sociálních sítích nebo společný obsah. Podle rozsahu spolupráce se můžeme domluvit také na umístění loga na dresech, klubovém oblečení či reklamních bannerech při akcích, kde to pořadatel umožní.</p>
+<p>Nemusí jít o velkou firmu ani vysokou částku. Rádi se domluvíme s místními podnikateli i většími společnostmi a připravíme spolupráci podle vašich možností.</p>
+<p><strong>Chcete být vidět společně s FC Flamingos? Napište nám a pojďme probrat možnosti!</strong></p>
+<a class="sponsor-news-contact" href="mailto:fc.flamingos.liberec@gmail.com?subject=Spolupr%C3%A1ce%20s%20FC%20Flamingos">Napište nám: fc.flamingos.liberec@gmail.com <span aria-hidden="true">↗</span></a>
+</article>
+</section>
+<section id="sponsors">
+<h2>Sponzoři</h2>
+<p>
+    Za Růžovým baletem stojí i naši partneři.
+    Děkujeme za podporu FC Flamingos!
+  </p>
+<div class="sponsors-grid">
+<article class="sponsor-card">
+<div class="sponsor-logo">
+<img alt="Imobilien Group" loading="lazy" src="./sponzor-imobilien.png"/>
+</div>
+<div class="sponsor-content">
+<span class="sponsor-label">PARTNER FC FLAMINGOS</span>
+<h3>Imobilien Group</h3>
+<a class="sponsor-link" href="http://www.imobilien.cz/html/onas.htm" rel="noopener noreferrer" target="_blank">
+          Navštívit web partnera
+          <span aria-hidden="true">↗</span>
+</a>
+</div>
+</article>
+<article class="sponsor-card">
+<div class="sponsor-logo">
+<img alt="Klub Lípa Liberec" loading="lazy" src="./sponzor-lipa.jpeg"/>
+</div>
+<div class="sponsor-content">
+<span class="sponsor-label">PARTNER FC FLAMINGOS</span>
+<h3>Klub Lípa Liberec</h3>
+<a class="sponsor-link" href="https://klublipa.cz/" rel="noopener noreferrer" target="_blank">
+          Navštívit web partnera
+          <span aria-hidden="true">↗</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<footer>
+<p>© 2026 FC Flamingos | Růžovej balet</p>
+</footer>
+<script src="script.js"></script>
+<script>
+/* Růžová ikona spolupráce místo barevného emoji. */
+(function () {
+  const icon = document.querySelector('.sponsors-link .home-link-icon');
+  if (icon) {
+    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-4-4a3 3 0 0 0-4 0l-.9.9a1 1 0 1 1-3-3l2.9-2.9a5.5 5.5 0 0 1 6 0l.4.2a2 2 0 0 0 1 .3H21"/><path d="m21 3 1 11h-2M3 3 2 14h2l6 6a1 1 0 1 0 3-3M3 5h5"/></svg>';
+  }
+})();
+</script>
+<script>
+function showJomaArticle() {
+  showSection('news');
+  window.requestAnimationFrame(function () {
+    const article = document.getElementById('novinky-joma');
+    if (!article) return;
+    const heading = article.querySelector('h3');
+    heading.setAttribute('tabindex', '-1');
+    heading.focus({preventScroll:true});
+    article.scrollIntoView({behavior:'instant',block:'start'});
+  });
+}
+</script><script>
+function showPolisArticle() {
+  showSection('news');
+  window.requestAnimationFrame(function () {
+    const article = document.getElementById('novinky-polis');
+    if (!article) return;
+    const heading = article.querySelector('h3');
+    heading.setAttribute('tabindex', '-1');
+    heading.focus({preventScroll:true});
+    article.scrollIntoView({behavior:'instant',block:'start'});
+  });
+}
+</script><script src="page-navigation.js"></script>
+</body>
+</html>

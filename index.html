@@ -5,7 +5,7 @@
 <base href="/">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>FC Flamingos</title>
+<title>Tým | FC Flamingos</title>
 <link href="styles.css" rel="stylesheet"/>
 <style>
 /* Oprava log: pevná plocha pro obrázek, text pod ní. */
@@ -71,8 +71,19 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 .joma-home-banner a.article-page-link:hover{background:#d00070;}
 @media(max-width:700px){.joma-home-banner a.article-page-link{width:100%;}}
 </style>
+
+<style>
+#team .team-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 26px}
+#team .team-picker a{display:grid;gap:4px;padding:14px 16px;border:1px solid #a54174;border-radius:12px;background:#201020;color:#fff;text-decoration:none}
+#team .team-picker strong{font-size:clamp(16px,3vw,22px)}
+#team .team-picker span{font-size:13px;color:#ffc3e3}
+#team .team-picker a:hover,#team .team-picker a[aria-current="true"]{background:#790b48;border-color:#ff8fc7}
+#team .team-roster[hidden]{display:none}
+#team .team-roster{scroll-margin-top:72px}
+#team .be-player-number{display:grid;place-items:center;width:54px;height:54px;margin:0 auto 12px;background:#43102d;border:1px solid #ba4a86;border-radius:12px;color:#ff9ed0;font-size:21px;font-weight:bold}
+</style>
 </head>
-<body data-page="home">
+<body data-page="team">
 <div class="menu">
 <button aria-controls="menu-content" aria-expanded="false" aria-label="Otevřít menu" class="menu-btn" onclick="toggleMenu()" type="button">
         ☰
@@ -100,7 +111,7 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 <h1>FC Flamingos</h1>
 <p>Růžový balet 🏆🦩</p>
 </header>
-<section id="home" class="active">
+<section id="home">
 <div class="joma-home-banner polis-home-banner">
 <div class="joma-banner-copy"><span class="joma-eyebrow">NOVÁ POSILA · VÍTEJ V RŮŽOVÉM!</span>
 <h2>Z akademie Slovanu<br/>do Flamingos. Vítej, Polisi!</h2>
@@ -342,8 +353,13 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
     </p>
 </div>
 </section>
-<section id="team">
+<section id="team" class="active">
 <h2>Tým</h2>
+<nav class="team-picker" aria-label="Výběr týmu">
+<a href="/tym/#a-tym" data-roster="a-tym"><strong>A tým</strong><span>FC Flamingos</span></a>
+<a href="/tym/#b-tym" data-roster="b-tym"><strong>B tým</strong><span>Flamingos BÉ</span></a>
+</nav>
+<div class="team-roster" id="a-tym" aria-label="Soupiska A týmu">
 <h3 class="position-title">Brankáři</h3>
 <div class="players-grid">
 <div class="player-card">
@@ -411,14 +427,6 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 <p><strong>Statistiky:</strong> 9 gólů, 4 asistence</p>
 </div>
 <div class="player-card">
-<img alt="Jiří Heiland" src="jirka.jpg"/>
-<h3>Jiří Heiland</h3>
-<p><strong>Pozice:</strong> Záložník</p>
-<p><strong>Číslo:</strong> 11</p>
-<p><strong>Věk:</strong> 19 let</p>
-<p><strong>Statistiky:</strong> 1 asistence</p>
-</div>
-<div class="player-card">
 <img alt="Jan Albrecht" src="honza.jpg"/>
 <h3>Jan Albrecht</h3>
 <p><strong>Pozice:</strong> Záložník</p>
@@ -469,6 +477,87 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 <p><strong>Věk:</strong> 20 let</p>
 <p><strong>Statistiky:</strong> 3 góly, 4 asistence</p>
 </div>
+</div>
+</div>
+<div class="team-roster" id="b-tym" aria-labelledby="be-roster-title">
+<h3 id="be-roster-title">Flamingos BÉ</h3>
+<p>Manažer týmu: <strong>David Drobný</strong></p>
+<h3 class="position-title">Brankáři</h3>
+<div class="players-grid">
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#88</div>
+<h3>Ondřej Blažek</h3>
+<p><strong>Pozice:</strong> Brankář</p>
+<p><strong>Číslo:</strong> 88</p>
+<p><strong>Věk:</strong> 22 let</p>
+</div>
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#43</div>
+<h3>Kristián Císařovský</h3>
+<p><strong>Pozice:</strong> Brankář</p>
+<p><strong>Číslo:</strong> 43</p>
+<p><strong>Věk:</strong> 22 let</p>
+</div>
+</div>
+<h3 class="position-title">Obránci</h3>
+<div class="players-grid">
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#8</div>
+<h3>Metin Šetina</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 8</p>
+<p><strong>Věk:</strong> 21 let</p>
+</div>
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#12</div>
+<h3>Matěj Král</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 12</p>
+<p><strong>Věk:</strong> 20 let</p>
+</div>
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#15</div>
+<h3>Kryštof Tomášek</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 15</p>
+<p><strong>Věk:</strong> 16 let</p>
+</div>
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#3</div>
+<h3>Jan Palan</h3>
+<p><strong>Pozice:</strong> Obránce</p>
+<p><strong>Číslo:</strong> 3</p>
+<p><strong>Věk:</strong> 16 let</p>
+</div>
+</div>
+<h3 class="position-title">Záložníci</h3>
+<div class="players-grid">
+<div class="player-card">
+<img alt="Jiří Heiland" src="jirka.jpg"/>
+<h3>Jiří Heiland</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 11</p>
+<p><strong>Věk:</strong> 19 let</p>
+<p><strong>Statistiky:</strong> 1 asistence</p>
+</div>
+
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#22</div>
+<h3>Vojtěch Lízner</h3>
+<p><strong>Pozice:</strong> Záložník</p>
+<p><strong>Číslo:</strong> 22</p>
+<p><strong>Věk:</strong> 16 let</p>
+</div>
+</div>
+<h3 class="position-title">Útočníci</h3>
+<div class="players-grid">
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#9</div>
+<h3>Daniel Pavelka</h3>
+<p><strong>Pozice:</strong> Útočník</p>
+<p><strong>Číslo:</strong> 9</p>
+<p><strong>Věk:</strong> 21 let</p>
+</div>
 <div class="player-card">
 <img alt="Adrián Forgáč" src="forgy.jpg"/>
 <h3>Adrián Forgáč</h3>
@@ -477,7 +566,37 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 <p><strong>Věk:</strong> 21 let</p>
 <p><strong>Statistiky:</strong> -</p>
 </div>
+
+<div class="player-card be-player">
+<div class="be-player-number" aria-hidden="true">#7</div>
+<h3>David Drobný</h3>
+<p><strong>Pozice:</strong> Útočník</p>
+<p><strong>Číslo:</strong> 7</p>
+<p><strong>Věk:</strong> 21 let</p>
 </div>
+</div>
+</div>
+<script>
+(function () {
+  const a = document.getElementById('a-tym');
+  const b = document.getElementById('b-tym');
+  const links = document.querySelectorAll('#team [data-roster]');
+  function selectRoster() {
+    const showB = location.hash === '#b-tym';
+    a.hidden = showB;
+    b.hidden = !showB;
+    for (const link of links) {
+      if (link.dataset.roster === (showB ? 'b-tym' : 'a-tym')) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    }
+  }
+  selectRoster();
+  window.addEventListener('hashchange', selectRoster);
+})();
+</script>
 </section>
 <section id="about">
 <h2>O klubu</h2>
