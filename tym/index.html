@@ -354,7 +354,7 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 </div>
 </section>
 <section id="team" class="active">
-<h2>Tým</h2>
+<h2>Týmy</h2>
 <nav class="team-picker" aria-label="Výběr týmu">
 <a href="/tym/#a-tym" data-roster="a-tym"><strong>A tým</strong><span>FC Flamingos</span></a>
 <a href="/tym/#b-tym" data-roster="b-tym"><strong>B tým</strong><span>Flamingos BÉ</span></a>
@@ -481,7 +481,6 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
 </div>
 <div class="team-roster" id="b-tym" aria-labelledby="be-roster-title">
 <h3 id="be-roster-title">Flamingos BÉ</h3>
-<p>Manažer týmu: <strong>David Drobný</strong></p>
 <h3 class="position-title">Brankáři</h3>
 <div class="players-grid">
 <div class="player-card be-player">
@@ -583,10 +582,11 @@ a.home-link{font-weight:normal;overflow-wrap:normal;}
   const links = document.querySelectorAll('#team [data-roster]');
   function selectRoster() {
     const showB = location.hash === '#b-tym';
-    a.hidden = showB;
+    const showA = location.hash === '#a-tym';
+    a.hidden = !showA;
     b.hidden = !showB;
     for (const link of links) {
-      if (link.dataset.roster === (showB ? 'b-tym' : 'a-tym')) {
+      if (link.dataset.roster === (showB ? 'b-tym' : showA ? 'a-tym' : '')) {
         link.setAttribute('aria-current', 'true');
       } else {
         link.removeAttribute('aria-current');
