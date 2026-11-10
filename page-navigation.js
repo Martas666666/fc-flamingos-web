@@ -23,4 +23,17 @@
     if (link.dataset.section === current) link.setAttribute('aria-current','page');
     else link.removeAttribute('aria-current');
   });
+  const teamCard = document.querySelector('.home-links .team-link .home-link-title');
+  if (teamCard) teamCard.textContent = 'Týmy';
+
+  const teamLink = document.querySelector('#menu-content a[data-section="team"]');
+  if (teamLink) {
+    const details = document.createElement('details');
+    details.className = 'teams-menu';
+    details.innerHTML = '<summary>Týmy</summary><a href="/tym/#a-tym">A tým</a><a href="/tym/#b-tym">B tým</a>';
+    teamLink.replaceWith(details);
+    const style = document.createElement('style');
+    style.textContent = '.teams-menu summary{cursor:pointer;padding:10px 14px;border-radius:8px;color:#fff;background:#2d1428}.teams-menu[open] summary{color:#ff9ed0}.teams-menu a{margin:4px 0 0 12px}';
+    document.head.append(style);
+  }
 })();
